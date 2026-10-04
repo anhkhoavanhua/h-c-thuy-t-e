@@ -1,0 +1,246 @@
+\documentclass[aps,prc,twocolumn,superscriptaddress,amsmath,amssymb,nofootinbib]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{physics}
+\usepackage{booktabs}
+
+\begin{document}
+
+\title{Classical Analytical Mechanics Formulation of a Driven Dual-Engine Coupling in Nuclear Vacuum: Three-State Temporal Evolution, Centrifugal Breakdown, and Semiclassical Relaxation Cascades}
+
+\author{Hua Van Anh Khoa}
+\email{khoa.hua.research@gmail.com}
+\affiliation{Independent Research Initiative, Da Nang, Vietnam}
+
+\date{\today}
+
+\begin{abstract}
+We establish an autonomous analytical mechanics framework formalizing a tripartite temporal evolution cycle---comprising a synchronized Past state (\(\mathcal{E}_{\text{past}}\)), a breakdown Present transition (\(\mathcal{E}_{\text{present}}\)), and a re-locked Future state (\(\mathcal{E}_{\text{future}}\))---governing the non-linear coupling between a cyclic macro-engine \(\mathcal{E}_{\text{dual}}\) and a confined harmonic coordinate \(x\). The configuration space is defined on a two-degree-of-freedom Lagrangian modulated by a holonomic synchronization constraint \(f(\theta, x) = x - \kappa \sin\theta = 0\). The laminar Past phase (\(\mathcal{E}_{\text{past}}\)) resides on a constrained single-degree-of-freedom manifold enduring over an exponential Poisson dwell time with mean residual \(\tau_{\text{dw}} \approx 4.5\text{--}6.0\,T_0\). Dynamic breakdown into the Present phase (\(\mathcal{E}_{\text{present}}\)) occurs when generalized centrifugal stress reaches the vacuum boundary threshold \(|\lambda| \ge R = E_{\text{vt}}/\ell_0\) (at critical velocity \(\dot{\theta}_{\text{br}} \approx 3.205\,\omega_0\)), triggering a step discontinuity in accelerations while generalized coordinates and momenta remain strictly continuous. The subsequent unconstrained motion executes an avalanche of inelastic Carnot boundary impacts (\(e=0\)), exhibiting geometric burst multiplicity (\(\langle N \rangle \approx 5.12\), maximum-likelihood parameter \(p = 1/\langle N \rangle \approx 0.195\)). Each impact releases an internal exciton dissipation step \(\Delta E_{\text{Carnot}} = \frac{1}{2}m_{\text{eff}} u^2 \approx 4.0\text{--}4.6\text{ MeV}\). The system subsequently re-locks below threshold into the Future phase (\(\mathcal{E}_{\text{future}}\)). Operating in a semiclassical domain where rotor angular momentum is \(\sim 3\hbar\) and individual losses are sub-quanta (\(\approx 0.4\,\hbar\omega_0\)), this work provides an exact analytical baseline bridging macroscopic constraint dynamics with pre-equilibrium nuclear de-excitation trends.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+Non-equilibrium mechanical models operating under state-dependent holonomic constraints provide fundamental paradigms for phase synchronization, limit-cycle maintenance, and dissipative transitions \cite{Dao1985,Goldstein2001,Brogliato1999}. In extreme energy regimes such as nuclear confinement, macroscopic collective modes couple to single-particle degrees of freedom across dynamic boundaries. 
+
+The theoretical construct of an engine-driven physical vacuum posits that cyclic macroscopic dynamics modulate microscopic degrees of freedom across three sequential temporal paradigms:
+\begin{enumerate}
+    \item \textbf{The Synchronized Past (\(\mathcal{E}_{\text{past}}\)):} An integrated, laminar regime wherein coordinates remain rigidly phase-locked on a single-degree-of-freedom constraint surface.
+    \item \textbf{The Transition Present (\(\mathcal{E}_{\text{present}}\)):} An active, non-equilibrium phase triggered by centrifugal constraint rupture (\(|\lambda| \ge R\)), generating stochastic relaxation cascades and discrete dissipative collisions.
+    \item \textbf{The Re-locked Future (\(\mathcal{E}_{\text{future}}\)):} A stabilized post-avalanche state wherein accumulated Carnot dissipation quenches angular velocity below threshold, resetting the manifold into a new synchronized epoch.
+\end{enumerate}
+
+In this paper, we formulate this tripartite evolution into a two-degree-of-freedom Lagrangian framework driven by Rayleigh--Van der Pol self-excitation and subject to classical D'Alembert--Carnot boundary collisions.
+
+\section{Analytical Mechanics of the Past State (\(\mathcal{E}_{\text{past}}\))}
+
+\subsection{Lagrangian and Holonomic Phase Constraint}
+We consider a generalized configuration space \((\theta, x) \in S^1 \times \mathbb{R}\). The analytical Lagrangian of the unconstrained system is:
+\begin{equation}
+L = \frac{1}{2} I \dot{\theta}^2 + \frac{1}{2} m \dot{x}^2 + \Delta E \cos\theta - \frac{1}{2} k x^2 + g x \sin\theta,
+\label{eq:lagrangian}
+\end{equation}
+where \(I\) is the generalized rotor phase inertia, \(m\) is the particle mass, \(k = m\omega_0^2\) represents harmonic confinement, \(\Delta E\) is the cyclic potential barrier, and \(g\) is the bilinear coupling parameter.
+
+The synchronized Past phase (\(\mathcal{E}_{\text{past}}\)) is enforced by the holonomic constraint:
+\begin{equation}
+f(\theta, x) = x - \kappa \sin\theta = 0, \quad \kappa = \ell_0 \frac{\Delta E}{E_{\text{vt}}},
+\label{eq:constraint}
+\end{equation}
+where \(\ell_0 = \sqrt{\hbar / (m\omega_0)}\) defines the spatial scale and \(E_{\text{vt}}\) represents the local vacuum confinement potential. Under the self-similarity condition \(E_{\text{vt}}/\Delta E = 3.0\), the geometric amplitude is \(\kappa = \ell_0 / 3\).
+
+\subsection{Equation of Motion on the Constrained Manifold}
+Applying the Lagrange equations of the first kind with multiplier \(\lambda(t)\):
+\begin{align}
+I \ddot{\theta} + \Delta E \sin\theta - g x \cos\theta &= -\lambda \kappa \cos\theta, \label{eq:eom_theta} \\
+m \ddot{x} + k x - g \sin\theta &= \lambda. \label{eq:eom_x}
+\end{align}
+Differentiating Eq.~\eqref{eq:constraint} twice with respect to time yields the second-order kinematic constraint identity:
+\begin{equation}
+\ddot{x} = \kappa \ddot{\theta} \cos\theta - \kappa \dot{\theta}^2 \sin\theta.
+\label{eq:kinematic}
+\end{equation}
+
+Eliminating \(\lambda(t)\) between Eqs.~\eqref{eq:eom_theta} and \eqref{eq:eom_x} projects the system onto a reduced single-degree-of-freedom manifold (\(n=1\)):
+\begin{multline}
+\left(I + m\kappa^2 \cos^2\theta\right)\ddot{\theta} - m\kappa^2 \dot{\theta}^2 \sin\theta \cos\theta + \Delta E \sin\theta \\
++ \left(k\kappa^2 - 2g\kappa\right)\sin\theta \cos\theta = 0.
+\label{eq:reduced_eom}
+\end{multline}
+
+Substituting Eq.~\eqref{eq:reduced_eom} back into Eq.~\eqref{eq:eom_x} yields the exact closed-form expression for the generalized constraint reaction:
+\begin{equation}
+\lambda(\theta, \dot{\theta}) = \frac{\sin\theta \left[-I m\kappa \dot{\theta}^2 + I(k\kappa - g) - \Delta E m\kappa \cos\theta + g m\kappa^2 \cos^2\theta\right]}{I + m\kappa^2 \cos^2\theta}.
+\label{eq:lambda_closed}
+\end{equation}
+In the fast-rotation regime (\(\dot{\theta} \gg \omega_0\)), centrifugal stress dominates, yielding the asymptotic limit:
+\begin{equation}
+\max_{\theta} |\lambda| \longrightarrow m\kappa \dot{\theta}^2.
+\end{equation}
+
+\section{The Present State (\(\mathcal{E}_{\text{present}}\)): Breakdown and Carnot Cascades}
+
+\subsection{Centrifugal Instability Threshold}
+Vacuum confinement maintains the synchronized phase \(\mathcal{E}_{\text{past}}\) provided the generalized reaction force does not exceed the structural threshold:
+\begin{equation}
+|\lambda(\theta, \dot{\theta})| \ge R \equiv \frac{E_{\text{vt}}}{\ell_0}.
+\label{eq:break_criterion}
+\end{equation}
+From Eq.~\eqref{eq:lambda_closed}, the asymptotic critical angular velocity is \(\dot{\theta}_{\text{asymp}} = \sqrt{R/(m\kappa)} = 3.000\,\omega_0\). Full numerical evaluation accounting for potential and inertial terms yields the exact dynamic breakdown threshold:
+\begin{equation}
+\dot{\theta}_{\text{br}} = 3.205\,\omega_0.
+\label{eq:theta_crit}
+\end{equation}
+
+Across the breakdown boundary \(t = t_g\), the finite magnitude of \(|\lambda| \le R\) guarantees strict continuity of generalized coordinates and momenta (\(\lim_{\Delta t \to 0} \Delta p = 0\)). Transition into the unconstrained Present state (\(n=2\)) manifests solely as a finite step discontinuity in accelerations:
+\begin{equation}
+\Delta \ddot{x} = -\frac{\lambda(t_g)}{m}, \qquad \Delta \ddot{\theta} = \frac{\lambda(t_g)\kappa \cos\theta(t_g)}{I}.
+\end{equation}
+
+\subsection{Inelastic Carnot Re-locking Impacts}
+In \(\mathcal{E}_{\text{present}}\), the particle evolves freely until its trajectory re-intersects the constraint surface \(f(\theta, x) = 0\) at \(t = t_{\text{lock}}\). 
+
+Re-establishing the holonomic constraint corresponds to an impulsive collision along the constraint normal \(\nabla f = (-\kappa\cos\theta, 1)\). Applying the D'Alembert impulse-momentum formalism with plastic restitution (\(e=0\)) yields:
+\begin{align}
+m (v^+ - v^-) &= \Lambda, \\
+I (\dot{\theta}^+ - \dot{\theta}^-) &= -\Lambda \kappa \cos\theta, \\
+v^+ &= \kappa \dot{\theta}^+ \cos\theta,
+\end{align}
+where \(v^- = \dot{x}^-\) and \(\dot{\theta}^-\) are pre-impact velocities. Solving for the normal impulse magnitude \(\Lambda\):
+\begin{equation}
+\Lambda = m_{\text{eff}} u, \qquad u = \kappa \dot{\theta}^- \cos\theta - v^-,
+\end{equation}
+where the effective contact inertia is:
+\begin{equation}
+m_{\text{eff}}(\theta) = \frac{m I}{I + m\kappa^2 \cos^2\theta}.
+\end{equation}
+
+By Carnot's classical theorem of impact mechanics, the irreversible energy dissipated upon re-locking is strictly positive:
+\begin{equation}
+\Delta E_{\text{Carnot}} = \frac{1}{2} m_{\text{eff}}(\theta) u^2 \ge 0.
+\label{eq:carnot_loss}
+\end{equation}
+Total energy balance is preserved with numerical drift verified below \(10^{-14}\).
+
+\begin{table}[t]
+\caption{\label{tab:params}Canonical parameters of the system normalized to the nuclear shell model (\(A \sim 70\), \(\hbar\omega_0 = 10.0\)~MeV, \(T_0 = 2\pi/\omega_0\)).}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Physical Parameter & Symbol & Physical Value & Dimensionless \\
+\hline
+Oscillator energy & \(\hbar\omega_0\) & $10.0$~MeV & $1.000$ \\
+Oscillator period & \(T_0\) & \(4.136 \times 10^{-22}\)~s & \(2\pi\) \\
+Coupling barrier & \(\Delta E\) & $10.0$~MeV & $1.000$ \\
+Rotor phase inertia & \(I\) & \(6.941 \times 10^{-57}\)~kg\(\cdot\)m\(^2\) & $1.000$ \\
+Vacuum confinement & \(E_{\text{vt}}\) & $30.0$~MeV & $3.000$ \\
+Oscillator length scale & \(\ell_0\) & $2.037$~fm & $1.000$ \\
+Coupling amplitude & \(\kappa\) & $0.679$~fm & \(1/3\) \\
+Ultimate tension & \(R\) & $2359.4$~N & $3.000$ \\
+Bilinear coupling & \(g\) & $78.65$~N & $0.100$ \\
+Drive damping time & \(\tau\) & \(10/\omega_0 = 1.59\,T_0\) & $10.000$ \\
+Nucleon friction & \(\gamma_x\) & Surface optical model & $0.700$ \\
+Restitution coefficient & \(e\) & $0.0$ & $0.000$ \\
+Drive speed ratio & \(f\) & \(\Omega_0 / \dot{\theta}_{\text{br}}\) & $1.050$ \\
+Thermal noise & \(k_B T\) & $1.0$~MeV & $0.100$ \\
+Separation energy & \(S_n\) & $8.0$~MeV & $0.800$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\section{The Future State (\(\mathcal{E}_{\text{future}}\)) and Statistical Limit Cycles}
+
+\subsection{Stochastic Equations of Motion}
+To balance mechanical Carnot dissipation and nucleon friction \(\gamma_x\), the rotor is driven by a Rayleigh--Van der Pol self-excitation torque. In the unconstrained phase, the coupled Langevin dynamics are:
+\begin{align}
+I \ddot{\theta} &= \gamma_\theta \left(1 - \frac{\dot{\theta}^2}{\Omega_0^2}\right)\dot{\theta} - \Delta E \sin\theta + g x \cos\theta + \xi_\theta(t), \label{eq:lang_theta} \\
+m \ddot{x} &= -k x + g \sin\theta - \gamma_x \dot{x} + \xi_x(t), \label{eq:lang_x}
+\end{align}
+where \(\Omega_0 = f \cdot \dot{\theta}_{\text{br}}\), with operating window \(f \in (0.90, 1.139)\), and \(\langle \xi_i(t) \xi_i(t') \rangle = 2 \gamma_i k_B T \delta(t-t')\). In the locked phase, Eqs.~\eqref{eq:lang_theta}--\eqref{eq:lang_x} are supplemented by constraint reaction \(\lambda(t)\) and Eq.~\eqref{eq:constraint}.
+
+\subsection{Two-Component Geometric Avalanche Dynamics}
+Stochastic numerical integration reveals that the transition between temporal regimes follows a distinct two-component distribution:
+\begin{enumerate}
+    \item \textbf{Laminar Dwell (\(\mathcal{E}_{\text{past}}\)):} The system resides in the locked state over an exponentially distributed dwell time \(T_0 + \mathrm{Exp}(\mu)\), with mean residual \(\tau_{\text{dw}} \approx 4.5\text{--}6.0\,T_0\) and residual coefficient of variation \(CV \approx 1.0\text{--}1.1\).
+    \item \textbf{Avalanche Cascades (\(\mathcal{E}_{\text{present}}\)):} Following breakdown, secondary impacts occur predominantly within \(< 0.2\,T_0\) (mean impact spacing \(0.36\,T_0\)). The number of sub-impacts \(N\) per event is consistent with a geometric distribution:
+    \begin{equation}
+    P(N = n) = (1 - p)^{n-1} p, \quad p = 1/\langle N \rangle \approx 0.195,
+    \end{equation}
+    yielding \(\langle N \rangle \approx 5.12\), verified by goodness-of-fit (\(\chi^2 = 10.9\) over 12 bins).
+    \item \textbf{Re-locked State (\(\mathcal{E}_{\text{future}}\)):} Following the burst, cumulative dissipation reduces angular velocity below threshold (\(\dot{\theta}_{\text{end}} \approx 2.15 < \dot{\theta}_{\text{br}}\) in 100\% of simulated runs), resetting the system into a stable \(\mathcal{E}_{\text{past}}\) cycle. At \(k_B T = 1.0\)~MeV, the rotor exhibits positive instantaneous angular velocity during \(91.3\%\) of the evolution time, and \(7/8\) simulated trajectories maintain net forward rotation over \(60\,T_0\).
+\end{enumerate}
+
+\section{Semiclassical Phenomenology and Limitations}
+
+\subsection{Ericson Exciton Partitioning}
+Individual Carnot sub-impacts exhibit a mean energy dissipation:
+\begin{equation}
+\langle \Delta E_{\text{Carnot}} \rangle \approx 4.0\text{--}4.6\text{ MeV} \approx (0.37\text{--}0.46)\hbar\omega_0.
+\end{equation}
+In nuclear relaxation kinematics, this maps to an internal exciton creation step (\(\Delta n = +2\), where \(n = p+h\) is the exciton number). Successive impacts accumulate internal energy \(E_{\text{exc}}(k) = \sum_{i=1}^k \Delta E_i\).
+
+When \(E_{\text{exc}} \ge S_n = 8.0\)~MeV (at median step \(k = 3\)), particle emission becomes energetically accessible. Applying Ericson state density scaling \(\rho(p,h,E) \propto E^{n-1}\), the emitted nucleon kinetic energy distribution follows \(\text{Beta}(2, n-1)\), yielding:
+\begin{equation}
+\langle \varepsilon \rangle = \frac{2 (E_{\text{exc}} - S_n)}{n + 1} \approx 0.9\text{--}1.6\text{ MeV},
+\end{equation}
+evaluated over simulated bursts for \(n = 2k \pm 1\).
+
+\subsection{Domain of Validity and Limitations}
+We delineate three structural boundaries of this classical framework:
+\begin{enumerate}
+    \item \textbf{Semiclassical Scale:} At threshold, the rotor phase carries an action \(I \dot{\theta}_{\text{br}} \approx 3.2\,\hbar\), and the localized particle energy \(\frac{1}{2}m(\kappa\dot{\theta}_{\text{br}})^2 \approx 0.57\,\hbar\omega_0\) is comparable to the zero-point ground energy \(\frac{1}{2}\hbar\omega_0\). The model therefore operates as an effective classical analog.
+    \item \textbf{Sub-Quantum Losses:} Classical Carnot losses \(\approx 0.4\,\hbar\omega_0\) represent statistical expectation values across continuous trajectories. In a rigorous quantum treatment, continuous dissipation would be resolved into discrete operator transitions in multiples of \(\hbar\omega_0\).
+    \item \textbf{Energy Budget and Thermal Decoupling:} In unconstrained simulation runs, stochastic noise and continuous driving pump high-energy tails into burst events. Decoupling the Van der Pol drive and thermal noise during the free burst phase enforces an upper bound \(E_{\text{budget}} \le 20.4\)~MeV, wherein nucleon emission occurs in \(7\text{--}36\%\) of cascades.
+\end{enumerate}
+
+\subsection{Outlook and Non-Markovian Quantum Challenges}
+Transitioning from this analytical mechanics baseline to a full open quantum systems formulation faces rigorously quantified physical boundaries \cite{Breuer2002}:
+\begin{enumerate}
+    \item \textbf{Quantum Discretization of the Cascade (Operator-Dependent):} Combining a Davies-type relaxation channel \(\hat{u}_-\) with an incoherent saturating phase pump \(L_p = \sqrt{\Gamma_0}\,e^{i\theta}f(\hat{\ell})\) yields a stationary quantum limit cycle with geometrically distributed relaxation bursts. In Monte Carlo wave-function simulations (16 trajectories of \(\approx 240\,T_0\)), at \(\langle\ell\rangle \approx 2.4\) the bursts contain $1.57$ jumps on average, each removing \(\approx 2.05\,\hbar\omega_0\), compared with $5.12$ classical impacts of \(\approx 0.40\,\hbar\omega_0\). Although the spectrum of \(H\) contains many gaps below \(0.5\,\hbar\omega_0\), the dipole-like selection rules of \(\hat{u}\) give them zero weight; the discrepancy is therefore a property of the chosen coupling operator and becomes an unambiguous prediction only once that operator is fixed by microscopic boundary kinematics.
+    \item \textbf{Environmental Cutoff and Nuclear Optical Friction:} Retaining \(\ge 90\%\) of the classical friction at the operational frequency \(\Omega = 2.63\,\omega_0\) requires a bath cutoff \(\hbar\omega_c \gtrsim 80\)~MeV, numerically close to the volume absorption saturation scale \(w_2 \simeq 78\text{--}90\)~MeV of the Koning--Delaroche phenomenological optical model \cite{Koning2003}. At low nucleon energies (\(5\text{--}10\)~MeV above \(\varepsilon_F\)), volume absorption yields \(\gamma_V \approx 0.01\text{--}0.04\,\omega_0\). The baseline friction \(\gamma_x = 0.70\,\omega_0\) adopted in this work corresponds physically to the strong surface-peaked absorption component (\(W_D \approx 3.5\)~MeV), which dominates pre-equilibrium nucleon damping near the Fermi surface.
+    \item \textbf{Breakdown of Markovian Complete Positivity:} At sub-thermal temperatures (\(k_B T \approx 0.1\,\hbar\omega_0\)), exact quantum Brownian motion yields ground dispersion \(\langle x^2 \rangle = 0.473\,\hbar/(m\omega_0)\), whereas the Markovian Caldeira--Leggett equation fails complete positivity (\(\langle x^2 \rangle \langle p^2 \rangle = 0.010\,\hbar^2\), yielding negative density eigenvalues \(\sim -1.11\)). A self-consistent quantum treatment requires non-Markovian Hierarchical Equations of Motion (HEOM) coupled to a non-linear quantum drive.
+\end{enumerate}
+
+\section{Conclusion}
+We have formulated an analytical mechanics model describing the tripartite temporal cycle (\(\mathcal{E}_{\text{past}} \to \mathcal{E}_{\text{present}} \to \mathcal{E}_{\text{future}}\)) of an engine--matter vacuum coupling. Combining Lagrange equations of the first kind with non-smooth D'Alembert--Carnot boundary impacts and Van der Pol limit-cycle dynamics, the framework proves that holonomic constraints under centrifugal stress naturally generate exponentially distributed dwell times and geometrically distributed relaxation cascades. This provides a self-consistent analytical foundation for investigating non-Hamiltonian dynamics at the interface of classical constraints and nuclear de-excitation phenomenology.
+
+\begin{acknowledgments}
+The author acknowledges computational facilities and independent analytical discussions concerning non-smooth dynamical systems.
+\end{acknowledgments}
+
+\begin{thebibliography}{99}
+\bibitem{Dao1985}
+N. V. Dao, \emph{Analytical Mechanics} [in Vietnamese: \emph{C\textohorn{} h\d{o}c gi\h{a}i t\'{\i}ch}] (Science and Technics Publishing House, Hanoi, 1985).
+
+\bibitem{Goldstein2001}
+H. Goldstein, C. Poole, and J. Safko, \emph{Classical Mechanics}, 3rd ed. (Addison-Wesley, San Francisco, 2002).
+
+\bibitem{Brogliato1999}
+B. Brogliato, \emph{Nonsmooth Mechanics: Models, Dynamics and Control}, 2nd ed. (Springer-Verlag, London, 1999).
+
+\bibitem{Ericson1960}
+T. Ericson, The statistical model and nuclear level densities, \emph{Adv. Phys.} \textbf{9}, 425 (1960).
+
+\bibitem{Griffin1966}
+J. J. Griffin, Statistical model of intermediate structure, \emph{Phys. Rev. Lett.} \textbf{17}, 478 (1966).
+
+\bibitem{VanDerPol1926}
+B. van der Pol, On relaxation-oscillations, \emph{Philos. Mag.} \textbf{2}, 978 (1926).
+
+\bibitem{Kubo1966}
+R. Kubo, The fluctuation-dissipation theorem, \emph{Rep. Prog. Phys.} \textbf{29}, 255 (1966).
+
+\bibitem{Gadioli1992}
+E. Gadioli and P. E. Hodgson, \emph{Pre-Equilibrium Nuclear Reactions} (Clarendon Press, Oxford, 1992).
+
+\bibitem{Koning2003}
+A. J. Koning and J. P. Delaroche, Local and global nucleon optical models from 1 keV to 200 MeV, \emph{Nucl. Phys. A} \textbf{713}, 231 (2003).
+
+\bibitem{Breuer2002}
+H.-P. Breuer and F. Petruccione, \emph{The Theory of Open Quantum Systems} (Oxford University Press, Oxford, 2002).
+\end{thebibliography}
+
+\end{document}

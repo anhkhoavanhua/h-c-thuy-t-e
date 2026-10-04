@@ -1,0 +1,29 @@
+S_n thật (IAEA, MeV): Ni60: 11.39, Ni62: 10.60, Cu64: 7.92, Cu66: 7.07, Ge74: 10.20
+
+=== A. Nguồn năng lượng (tỉ số lái f) → tán xạ tương lai ===
+  f      đợt   ⟨N⟩ xung đột   ⟨E_exc⟩ đợt (MeV)   P(≥S_n Ni60)   P(≥S_n Ni62)   P(≥S_n Cu64)   P(≥S_n Cu66)   P(≥S_n Ge74)   P(≥S_n bài báo)   tán xạ/T0 (S_n = 8)
+  0.95    16      2.12            9.00          0.19      0.25      0.50      0.50      0.31      0.50          0.017
+  1.05    69      4.51           16.75          0.45      0.46      0.62      0.67      0.51      0.62          0.093
+  1.13    75      8.61           36.20          0.69      0.72      0.80      0.81      0.75      0.80          0.130
+
+  Lần xung đột thứ mấy thì E_exc vượt S_n = 8 MeV (trong các đợt có vượt):
+    f = 0.95: trung vị k = 2, TB 1.88, phân bố k=1..6+: 0.12, 0.88, 0.00, 0.00, 0.00, 0.00
+    f = 1.05: trung vị k = 3, TB 2.93, phân bố k=1..6+: 0.21, 0.16, 0.28, 0.23, 0.07, 0.05
+    f = 1.13: trung vị k = 2, TB 2.90, phân bố k=1..6+: 0.28, 0.25, 0.17, 0.10, 0.05, 0.15
+
+=== B. Tương lai tách nhánh tại lần xung đột thứ k (f = 1.05, S_n = 8 MeV) ===
+   k   đợt tới k   P(Tương lai thắng)   P(Hiện tại thắng, < S_n)   P(Hiện tại thắng, ≥ S_n: tán xạ)   H_k (nat)
+   1      69          0.35                  0.61                       0.04                     0.81
+   2      45          0.18                  0.67                       0.16                     0.87
+   3      37          0.16                  0.43                       0.41                     1.02
+   4      31          0.26                  0.16                       0.58                     0.96
+   5      23          0.17                  0.09                       0.74                     0.74
+   6      19          0.16                  0.00                       0.84                     0.44
+   7      16          0.12                  0.00                       0.88                     0.38
+   8      14          0.00                  0.00                       1.00                     -0.00
+
+=== C. Phổ năng lượng tán xạ ra (neutron, Ericson Beta(2, n−1), n = 2k±1) và giá năng lượng ===
+  f = 0.95: 8 lần tán xạ; ⟨ε⟩ = 1.32 MeV, trung vị 1.18, 95% < 2.64 MeV, P(ε > 3 MeV) = 0.12
+  f = 1.05: 43 lần tán xạ; ⟨ε⟩ = 2.21 MeV, trung vị 1.62, 95% < 5.52 MeV, P(ε > 3 MeV) = 0.30
+  f = 1.13: 60 lần tán xạ; ⟨ε⟩ = 2.88 MeV, trung vị 2.38, 95% < 7.18 MeV, P(ε > 3 MeV) = 0.33
+  lượng tử (Part III): mỗi lần xung đột Hiện tại ↔ Tương lai mở 3.79 nat tương lai, tốn ≈ 27.7 MeV ⟹ 7.3 MeV mỗi nat tương lai bị tán xạ

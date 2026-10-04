@@ -1,0 +1,24 @@
+=== B. Cực trị ∫e^{−ρt}L dt ⟺ EL + (−ρ ∂L/∂q̇): DEL rời rạc so với RK4 ===
+ρ=0.00: |q_DEL − q_RK4| tại t=4T0, h=T/1250,/2500,/5000: 1.47e-04 3.68e-05 9.21e-06  bậc 2.00, 2.00
+ρ=0.05: |q_DEL − q_RK4| tại t=4T0, h=T/1250,/2500,/5000: 3.81e-03 1.98e-03 1.01e-03  bậc 0.95, 0.97
+ρ=0.10: |q_DEL − q_RK4| tại t=4T0, h=T/1250,/2500,/5000: 1.48e-02 7.54e-03 3.81e-03  bậc 0.97, 0.99
+ρ=0.10, t∈[0,2T0]: ΔE = 0.161515, ∫2ρT dt = 0.161515  (lệch tương đối 6.0e-09)
+VdP: Q_θ = γθ(1−θ̇²/Ω0²)θ̇ ⟹ ρ_eff(θ̇) = γθ(1−θ̇²/Ω0²)/I; θ̇→0: ρ_eff = 0.100 ω0, θ̇ = Ω0: ρ_eff = 0
+Chiết khấu từ thời gian lưu Poisson: γ_RL = e^(−τ/τ_dw) = 0.99241 mỗi nhịp T0/25; horizon hiệu dụng 1/(1−γ) = 131.8 nhịp = 5.25 T0
+
+=== D. Bellman có t (đồng hồ τ = T0/25) trên đa tạp E_past, điều khiển mô-men u ===
+kiểm λ: tiệm cận √(R/mκ) = 3.0000; θ̇_gãy theo quỹ đạo (θ̇ tại θ=0, mã Part I) = 3.2048 (bài báo 3.205)
+       ngưỡng tĩnh min{θ̇ : max_θ|λ(θ,θ̇)| ≥ R}: không cản 3.1073; có cản 3.0559; u=0.4: 3.0382
+
+-- phạt gãy P = 2 vòng, horizon 20 T0 = 500 nhịp, giá công c = 0.15, γ = 0.99241 (VI hội tụ 2354 vòng) --
+lưới  s0=(0, 2.15): V_t-phụ-thuộc = 33.574, P(gãy) = 0.013 | V_dừng = 33.310, P(gãy) = 0.016
+SDE   s0=(0, 2.15): V_t-phụ-thuộc = 33.892 ± 0.019, P(gãy) = 0.006 | V_dừng = 33.665 ± 0.030, P(gãy) = 0.007
+θ̇ lớn nhất còn đẩy (u>0) tại θ=0 theo thời gian còn lại: 20T0→2.90, 10T0→2.90, 5T0→2.93, 2T0→2.98, 1T0→2.95, 0.4T0→2.95 | dừng: 2.95
+⟨u⟩ trên dải θ̇∈(1.5,3) theo thời gian còn lại 20/5/1/0.4 T0: 0.404 0.424 0.437 0.206
+
+-- phạt gãy P = 10 vòng, horizon 20 T0 = 500 nhịp, giá công c = 0.15, γ = 0.99241 (VI hội tụ 2359 vòng) --
+lưới  s0=(0, 2.15): V_t-phụ-thuộc = 33.492, P(gãy) = 0.008 | V_dừng = 33.263, P(gãy) = 0.007
+SDE   s0=(0, 2.15): V_t-phụ-thuộc = 33.842 ± 0.022, P(gãy) = 0.003 | V_dừng = 33.616 ± 0.025, P(gãy) = 0.002
+θ̇ lớn nhất còn đẩy (u>0) tại θ=0 theo thời gian còn lại: 20T0→2.90, 10T0→2.90, 5T0→2.90, 2T0→2.95, 1T0→2.95, 0.4T0→2.90 | dừng: 2.90
+⟨u⟩ trên dải θ̇∈(1.5,3) theo thời gian còn lại 20/5/1/0.4 T0: 0.400 0.413 0.418 0.199
+

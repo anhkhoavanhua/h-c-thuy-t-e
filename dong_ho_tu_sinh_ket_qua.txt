@@ -1,0 +1,25 @@
+=== A. Toán tử thời gian góc: [Φ, L] = i có nghiệm không? ===
+  ℓ ∈ [−3, 3] (d = 7): min‖[Φ, L] − i·1‖_F = 2.6458 = √d = 2.6458  (sai số tương đối 100%); Tr[Φ, L] = 0 ≠ Tr(i·1) = 7i
+  ℓ ∈ [−10, 10] (d = 21): min‖[Φ, L] − i·1‖_F = 4.5826 = √d = 4.5826  (sai số tương đối 100%); Tr[Φ, L] = 0 ≠ Tr(i·1) = 21i
+  ℓ ∈ [−30, 30] (d = 61): min‖[Φ, L] − i·1‖_F = 7.8102 = √d = 7.8102  (sai số tương đối 100%); Tr[Φ, L] = 0 ≠ Tr(i·1) = 61i
+  trên ℝ: [T_geom, p_θ] = iħ·I/⟨p_θ⟩ = iħ/2.4 (I = 1, ⟨p_θ⟩ = 2.4ħ) — không phải iħ; cặp liên hợp đúng: [T_geom, H_rot] = iħ·p̂/⟨p⟩ ≈ iħ chỉ gần ⟨p⟩
+  trên ℝ: [T_geom, p_θ] = iħ·I/⟨p_θ⟩ = iħ/3.0 (I = 1, ⟨p_θ⟩ = 3.0ħ) — không phải iħ; cặp liên hợp đúng: [T_geom, H_rot] = iħ·p̂/⟨p⟩ ≈ iħ chỉ gần ⟨p⟩
+  trên ℝ: [T_geom, p_θ] = iħ·I/⟨p_θ⟩ = iħ/3.2 (I = 1, ⟨p_θ⟩ = 3.2ħ) — không phải iħ; cặp liên hợp đúng: [T_geom, H_rot] = iħ·p̂/⟨p⟩ ≈ iħ chỉ gần ⟨p⟩
+  Pauli: H_total bị chặn dưới ⟹ không có T tự liên hợp với [T, H] = iħ chính xác
+
+=== C. Biên độ x trên đa tạp khi gãy so với r_br ===
+  r_br = 3ℓ0 = 6.11 fm;  |x| = κ|sinθ| ≤ κ = ℓ0/3 = 0.679 fm  (= 0.111 r_br)
+  dao động điểm không: x_rms = ℓ0/√2 = 1.44 fm;  gãy là ngưỡng LỰC |λ| ≥ R = k·r_br, không phải ngưỡng vị trí
+
+=== B. 'Mở cuộn' Φ ∈ ℝ: sàn 1 − F theo chu vi đồng hồ 2π/δ và cửa sổ năng lượng tw ===
+  kiểm lại với N3 (δ = 1, nmax 10, ±16): J=3: 1−F(1 vòng) 0.054, (WdW) 0.306;  J=30: 1−F(1 vòng) 0.015, (WdW) 0.048;  (N3 gốc nmax 15, ±24: J=3 0.054/0.307, J=30 0.015/0.048)
+   J   δ      chu kỳ đồng hồ   chiều    1−F (tw=0.35 T_rot)   (tw=5)   (tw=50, WdW)
+    3  1.000       1 T_rot       363    0.0539               0.2554   0.3065
+    3  0.500       2 T_rot       715    0.0601               0.0431   0.0431
+    3  0.250       4 T_rot      1419    0.0600               0.0431   0.0431
+    3  0.125       8 T_rot      2827    0.0552               0.0590   0.0590
+   30  1.000       1 T_rot       363    0.0146               0.0484   0.0484
+   30  0.500       2 T_rot       715    0.0029               0.0222   0.0484
+   30  0.250       4 T_rot      1419    0.0037               0.0060   0.0479
+   30  0.125       8 T_rot      2827    0.0037               0.0059   0.0479
+

@@ -1,0 +1,18 @@
+Phát neutron thật: f = 1.05, A = 70, a = 8.75 MeV⁻¹, S_n = 8.0 MeV; 8 quỹ đạo × 100 T0 mỗi biến thể
+  (a) chuẩn Part I, k_BT = 1 MeV     gãy/T0 = 0.940, va chạm/T0 = 0.939, Quá khứ = 52.4%, T_nuc TB = 1.00 MeV
+  (b) nung nóng, KHÔNG phát          gãy/T0 = 1.619, va chạm/T0 = 1.619, Quá khứ = 46.9%, T_nuc TB = 6.18 MeV, E_res cuối TB = 709 MeV
+  (c) nung nóng + phát thật          gãy/T0 = 0.916, va chạm/T0 = 0.914, Quá khứ = 53.7%, T_nuc TB = 1.00 MeV, phát/T0 = 0.371, ⟨ε⟩ = 1.29 MeV (trung vị 0.87)
+
+  thời gian từ mốc tán xạ tới khi quay về Quá khứ (khóa giữ ≥ T0):
+    (a) mốc = E_exc tích lũy vượt S_n (không phát):  TB 1.19 T0, trung vị 0.77 T0 (n = 237)
+    (c) mốc = neutron thoát thật:                    TB 1.14 T0, trung vị 0.72 T0 (n = 294)
+    tỉ số (c)/(a) = 0.96
+Phát neutron thật: k_BT nền = 0.5 MeV, f = 1.05, A = 70, a = 8.75 MeV⁻¹, S_n = 8.0 MeV; 8 quỹ đạo × 100 T0 mỗi biến thể
+  (a) chuẩn, k_BT = 0.5 MeV cố định  gãy/T0 = 0.464, va chạm/T0 = 0.463, Quá khứ = 63.1%, T_nuc TB = 0.50 MeV
+  (b) nung nóng, KHÔNG phát          gãy/T0 = 1.936, va chạm/T0 = 1.935, Quá khứ = 38.4%, T_nuc TB = 6.32 MeV, E_res cuối TB = 816 MeV
+  (c) nung nóng + phát thật          gãy/T0 = 0.529, va chạm/T0 = 0.526, Quá khứ = 60.3%, T_nuc TB = 0.64 MeV, phát/T0 = 0.224, ⟨ε⟩ = 1.29 MeV (trung vị 0.92)
+
+  thời gian từ mốc tán xạ tới khi quay về Quá khứ (khóa giữ ≥ T0):
+    (a) mốc = E_exc tích lũy vượt S_n (không phát):  TB 0.76 T0, trung vị 0.34 T0 (n = 129)
+    (c) mốc = neutron thoát thật:                    TB 0.75 T0, trung vị 0.36 T0 (n = 179)
+    tỉ số (c)/(a) = 0.99

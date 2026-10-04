@@ -1,0 +1,8 @@
+{"var": "H", "name": "TE-DQN + Hamilton–Jacobi", "seed": 0, "ret": 29.954849717378057, "se": 0.07019664574385326, "breaks": 0.0065, "sec": 106.41632390022278, "iters": 8000, "transitions": 256000}
+{"var": "T", "name": "TE-DQN", "seed": 0, "ret": 30.356941866209812, "se": 0.01704785603938321, "breaks": 0.002, "sec": 107.39071321487427, "iters": 8000, "transitions": 256000}
+{"var": "S", "name": "DQN bán-Markov γ^Δt", "seed": 0, "ret": 32.49373714750976, "se": 0.021236660128991034, "breaks": 0.006, "sec": 107.5832839012146, "iters": 8000, "transitions": 256000}
+{"var": "V", "name": "DQN thường", "seed": 0, "ret": 27.95580023455769, "se": 0.01765045844506938, "breaks": 0.0, "sec": 107.77522420883179, "iters": 8000, "transitions": 256000}
+{"var": "H", "name": "TE-DQN + Hamilton–Jacobi", "seed": 1, "ret": 27.66489744399098, "se": 0.02283280172769789, "breaks": 0.008, "sec": 91.72527599334717, "iters": 8000, "transitions": 256000}
+{"var": "T", "name": "TE-DQN", "seed": 1, "ret": 26.0391437975027, "se": 0.08970961570834841, "breaks": 2.146, "sec": 92.02848625183105, "iters": 8000, "transitions": 256000}
+{"var": "S", "name": "DQN bán-Markov γ^Δt", "seed": 1, "ret": 29.38465235726855, "se": 0.018760417862021206, "breaks": 0.0005, "sec": 92.81431984901428, "iters": 8000, "transitions": 256000}
+{"var": "V", "name": "DQN thường", "seed": 1, "ret": 33.06526653061433, "se": 0.029896284889230428, "breaks": 0.106, "sec": 92.8373498916626, "iters": 8000, "transitions": 256000}

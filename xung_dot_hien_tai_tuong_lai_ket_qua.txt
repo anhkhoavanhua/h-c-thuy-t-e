@@ -1,0 +1,18 @@
+=== 1–2. Xung đột Hiện tại ↔ Tương lai trong dữ liệu sẵn có (k_BT = 1 MeV, lái bật cả khi tự do) ===
+  f = 0.95: 16 đợt, ⟨N⟩ = 2.12, p = 1/⟨N⟩ = 0.471, χ²(Geom) = 1.1 / 0 bậc tự do; Hiện tại chiếm 1.5% thời gian; bản ghi Carnot 0.09 / T0
+     nguy cơ h_k = P(Tương lai thắng ở va chạm k): k=1: 0.44 (n=16), k=2: 0.67 (n=9)
+     xóa trí nhớ: corr(N_i, N_i+1) = -0.34, corr(lưu_i, lưu_i+1) = -0.38, corr(N_i, lưu_i+1) = -0.40  (12 cặp)
+  f = 1.05: 69 đợt, ⟨N⟩ = 4.51, p = 1/⟨N⟩ = 0.222, χ²(Geom) = 9.0 / 6 bậc tự do; Hiện tại chiếm 17.4% thời gian; bản ghi Carnot 0.69 / T0
+     nguy cơ h_k = P(Tương lai thắng ở va chạm k): k=1: 0.35 (n=69), k=2: 0.18 (n=45), k=3: 0.16 (n=37), k=4: 0.26 (n=31), k=5: 0.17 (n=23), k=6: 0.16 (n=19), k=7: 0.12 (n=16), k=8: 0.00 (n=14)
+     xóa trí nhớ: corr(N_i, N_i+1) = +0.09, corr(lưu_i, lưu_i+1) = -0.06, corr(N_i, lưu_i+1) = -0.07  (65 cặp)
+  f = 1.13: 75 đợt, ⟨N⟩ = 8.61, p = 1/⟨N⟩ = 0.116, χ²(Geom) = 10.6 / 8 bậc tự do; Hiện tại chiếm 35.7% thời gian; bản ghi Carnot 1.55 / T0
+     nguy cơ h_k = P(Tương lai thắng ở va chạm k): k=1: 0.16 (n=75), k=2: 0.19 (n=63), k=3: 0.10 (n=51), k=4: 0.17 (n=46), k=5: 0.03 (n=38), k=6: 0.14 (n=37), k=7: 0.16 (n=32), k=8: 0.04 (n=27)
+     xóa trí nhớ: corr(N_i, N_i+1) = -0.08, corr(lưu_i, lưu_i+1) = +0.01, corr(N_i, lưu_i+1) = +0.16  (71 cặp)
+
+=== 3. Đổi cán cân xung đột (f = 1.05, 4 × 120 T0 mỗi trường hợp) ===
+  tắt lái khi tự do (nghiêng về Tương lai): 65 đợt, ⟨N⟩ = 3.80, p = 1/⟨N⟩ = 0.263, χ²(Geom) = 11.9 / 4 bậc tự do; Hiện tại chiếm 14.7% thời gian; bản ghi Carnot 0.59 / T0
+     nguy cơ h_k = P(Tương lai thắng ở va chạm k): k=1: 0.31 (n=65), k=2: 0.44 (n=45), k=3: 0.12 (n=25), k=4: 0.18 (n=22), k=5: 0.17 (n=18), k=6: 0.13 (n=15), k=7: 0.23 (n=13), k=8: 0.40 (n=10)
+     xóa trí nhớ: corr(N_i, N_i+1) = -0.15, corr(lưu_i, lưu_i+1) = +0.08, corr(N_i, lưu_i+1) = -0.09  (61 cặp)
+  k_BT = 0.5 MeV: 54 đợt, ⟨N⟩ = 2.85, p = 1/⟨N⟩ = 0.351, χ²(Geom) = 2.5 / 3 bậc tự do; Hiện tại chiếm 10.1% thời gian; bản ghi Carnot 0.38 / T0
+     nguy cơ h_k = P(Tương lai thắng ở va chạm k): k=1: 0.39 (n=54), k=2: 0.42 (n=33), k=3: 0.26 (n=19), k=4: 0.21 (n=14), k=5: 0.27 (n=11), k=6: 0.38 (n=8)
+     xóa trí nhớ: corr(N_i, N_i+1) = +0.02, corr(lưu_i, lưu_i+1) = +0.03, corr(N_i, lưu_i+1) = +0.27  (50 cặp)

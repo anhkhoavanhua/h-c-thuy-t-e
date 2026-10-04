@@ -1,0 +1,18 @@
+=== A. Lượng tử: năng lượng vượt chân không và giá năng lượng của thời gian (Carnot b = 1) ===
+  E_0 (chân không của S, gồm điểm không) = -0.036 ħω0; khe tới mức kích thích đầu = 0.866 ħω0; ngưỡng gãy E_br = 4.706
+  a (bơm)   ΔE = ⟨H⟩−E0   P_vào (ħω0/T0)   J_C (/T0)   h (nat/T0)   P/h (ħω0/nat)   P/J_C (ħω0/bản ghi)
+    0.00       0.000         0.0000         0.0000       0.000          nan             nan
+    0.01       0.572         0.0061         0.0050       0.166        0.037           1.226
+    0.03       0.713         0.0191         0.0134       0.369        0.052           1.434
+    0.10       0.962         0.0754         0.0442       1.013        0.074           1.705
+    0.30       1.731         0.3217         0.1502       2.493        0.129           2.141
+    1.00       4.262         1.3701         0.4941       5.234        0.262           2.773
+    3.00       6.658         2.6061         0.8242       6.786        0.384           3.162
+   10.00       7.922         3.3404         0.9972       7.231        0.462           3.350
+  Landauer: tối thiểu k_BT = 0.1 ħω0 (1 MeV) mỗi nat ghi lại; tỉ số P/h ÷ k_BT ở E_dual (a = 1): 2.6×
+
+=== B. Cổ điển (Part I): hàng rào kích hoạt từ tần suất gãy theo nhiệt độ ===
+  dữ liệu (k_BT MeV → gãy/T0): 0.2 → 0.188, 0.5 → 0.525, 1.0 → 1.025
+  khớp Arrhenius rate = A e^(−Δ/k_BT): Δ = 0.0406 ħω0 = 0.41 MeV, A = 1.37 /T0   (bài báo: Δ_eff ≈ 0.4 MeV)
+  khe tất định (λ ∝ θ̇²): ½⟨M⟩θ̇_br²(1 − M_det) = 0.743 ħω0 = 7.4 MeV — lớn hơn Δ khớp 18×: nhiễu không cần vượt cả khe, chỉ cần đẩy pha θ tới góc |λ| lớn nhất
+

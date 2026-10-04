@@ -1,0 +1,265 @@
+\documentclass[aps,prc,twocolumn,superscriptaddress,amsmath,amssymb,nofootinbib]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\newcommand{\Edual}{\mathcal{E}_{\text{dual}}}
+\newcommand{\Epast}{\mathcal{E}_{\text{past}}}
+\newcommand{\Epres}{\mathcal{E}_{\text{present}}}
+\newcommand{\Efut}{\mathcal{E}_{\text{future}}}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\kket}[1]{\lvert #1\rangle\rangle}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+\begin{document}
+
+\title{Driven Dual-Engine Coupling in Nuclear Vacuum III: Timeless Quantum Formulation, Carnot Records as Observer, and a Kinematic Anti--de~Sitter Embedding}
+
+\author{Hua Van Anh Khoa}
+\email{khoa181101@gmail.com}
+\affiliation{Independent Research Initiative, Da Nang, Vietnam}
+
+\date{\today}
+
+\begin{abstract}
+We quantize the driven dual-engine model of Part~I---a rotor phase $\theta$ holonomically coupled to a confined coordinate $x$ through $x=\kappa\sin\theta$, with centrifugal breakdown and inelastic Carnot re-locking---and embed it in a timeless Wheeler--DeWitt/Page--Wootters framework. (i)~Schr\"odinger quantization on the constraint manifold yields seven locked levels below the breakdown energy $E_{\text{br}}=4.706\,\hbar\omega_0$; the highest locked rotor level is $|\ell|=3$, and the smallest downward quantum near threshold is $2.32\,\hbar\omega_0$, so the classical $0.4\,\hbar\omega_0$ Carnot losses are ensemble averages of rotor-ladder quanta. In the Lindblad model, $92\%$ of relaxation jumps are $\ell\to\ell-1$ transitions carrying $99.7\%$ of the dissipated energy. (ii)~We construct the history state $\kket{\Psi}=N^{-1/2}\sum_k\ket{k}_C\otimes U_k\cdots U_1\ket{\psi_0}_S\ket{0}_E$ of a pulse-train clock, the engine, and a Carnot record register. It satisfies the discrete Wheeler--DeWitt constraint to $4\times10^{-15}$. The exponential growth $3^k$ of the record space is removed exactly: all internal observables follow from the reduced Kraus map (agreement $1.4\times10^{-15}$ with the full $2.6\times10^5$-dimensional history state) and from Born-sampled branches, allowing evolution over $60\,T_0$. The continuum limit $\tau\to0$ converges to the Lindblad equation as $O(\tau)$. (iii)~The Carnot bath acts as observer: a predictability sieve selects constraint-satisfying wave packets---the synchronized Past phase---whose Carnot jump rate is eight times lower than that of energy eigenstates, and, for ideal nucleon records, quantum-Darwinist redundancy and Born statistics; in the dynamical collision model the records favour the rotor angle but show no redundancy plateau within $1.4\,T_0$. (iv)~Global anti--de~Sitter space with $L=\hbar c/\hbar\omega_0=19.73$~fm reproduces the oscillator period, length scale, spectrum and shell degeneracies to $10^{-8}$; we show that this embedding is kinematic, and that an apparent coincidence with the Hawking--Page temperature is not robust. The arrow of time, the observer and the three temporal phases are thereby identified with the growth of Carnot records inside a globally static state.
+\end{abstract}
+
+\maketitle
+
+%=====================================================================
+\section{Introduction}
+%=====================================================================
+Part~I~\cite{PartI} formulated a two-degree-of-freedom Lagrangian
+\begin{equation}
+L=\tfrac12I\dot\theta^2+\tfrac12m\dot x^2+\Delta E\cos\theta-\tfrac12kx^2+gx\sin\theta
+\label{eq:L}
+\end{equation}
+with the holonomic constraint $f=x-\kappa\sin\theta=0$, $\kappa=\ell_0\Delta E/E_{\text{vt}}=\ell_0/3$, and described a three-phase cycle: a synchronized Past ($\Epast$), a breakdown Present ($\Epres$) with inelastic Carnot impacts, and a re-locked Future ($\Efut$). The parameters are those of Table~I of Part~I: $\hbar\omega_0=10$~MeV, $I=k=m=\Delta E=1$, $g=0.1$, $R=E_{\text{vt}}/\ell_0=3$ (units $\hbar=m=\omega_0=\ell_0=1$), $T_0=2\pi$.
+
+Part~I is classical. The rotor action at threshold is $I\dot\theta_{\text{br}}\approx3.2\hbar$, so a quantum treatment is required to decide which statements survive. Three further questions are natural for a model built around \emph{temporal phases}: (a) how time and its arrow arise when the whole system is described by a stationary state, as in the Wheeler--DeWitt (WdW) equation~\cite{DeWitt1967} and the Page--Wootters (PW) mechanism~\cite{PageWootters1983,GLM2015,Moreva2014}; (b) who observes the engine; and (c) whether the harmonic confinement admits a geometric (anti--de~Sitter) reading~\cite{Maldacena1998}.
+
+We address these numerically, with explicit error control. A preliminary study was limited by two obstacles: the record space of a discrete WdW state grows as $3^k$, and the AdS reading lacks a large-$N$ dual. We remove the first exactly (Sec.~\ref{sec:wdw}) and delimit the second (Sec.~\ref{sec:ads}).
+
+%=====================================================================
+\section{Quantum engine}
+\label{sec:quantum}
+%=====================================================================
+\subsection{Schr\"odinger equation on the constraint manifold}
+Substituting $x=\kappa\sin\theta$ into Eq.~(\ref{eq:L}) gives $L=\frac12M(\theta)\dot\theta^2-U(\theta)$ with
+\begin{align}
+M&=I+m\kappa^2\cos^2\theta,\\
+U&=-\Delta E\cos\theta+\left(\tfrac12k\kappa^2-g\kappa\right)\sin^2\theta,
+\end{align}
+whose Euler--Lagrange equation is Eq.~(6) of Part~I. Because $M$ depends on $\theta$, operator ordering is ambiguous. We compare the Laplace--Beltrami operator, the same with the da~Costa geometric potential $-\hbar^2K^2/8$ appropriate for confinement by a stiff well~\cite{daCosta1981}, and a naive ordering; the three differ by at most $0.0098\,\hbar\omega_0$ (0.1~MeV) on the ten lowest levels.
+
+\begin{table}[t]
+\caption{Spectrum of the constrained Schr\"odinger equation (Laplace--Beltrami ordering, 512-point periodic grid). $\bar M=1/\langle1/M\rangle=1.0541$. The breakdown energy of Part~I, $E_{\text{br}}=\frac12M(0)\dot\theta_{\text{br}}^2+U(0)$, is $4.706\,\hbar\omega_0$.}
+\label{tab:levels}
+\begin{ruledtabular}
+\begin{tabular}{cccc}
+Level & $E$ ($\hbar\omega_0$) & $\sqrt{\langle p_\theta^2\rangle}$ & Character \\
+\hline
+0 & $-0.543$ & 0.67 & libration \\
+1, 2 & 0.321, 0.842 & 1.15, 1.01 & libration \\
+3, 4 & 1.968, 1.991 & 1.98, 1.94 & rotation $\pm2$ \\
+5, 6 & 4.306, 4.306 & 2.99 & rotation $\pm3$ (locked) \\
+7, 8 & 7.608, 7.608 & 4.00 & rotation $\pm4$ (broken) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Table~\ref{tab:levels} shows that the Past phase supports exactly seven quantum states (Bohr--Sommerfeld: 6.3). The highest locked rotation is $|\ell|=3$, which makes precise the statement of Part~I that the rotor carries $\sim3\hbar$. The smallest downward quantum from $|\ell|=3$ is $2.32\,\hbar\omega_0$, five to six times the classical Carnot loss $0.40$--$0.46\,\hbar\omega_0$. Energy is therefore released on the rotor ladder $(2\ell-1)\hbar^2/2\bar M$, not in multiples of $\hbar\omega_0$, because on the constraint manifold the particle has no independent oscillator quantum.
+
+A Gaussian rotor packet at the operating speed $\dot\theta_d=0.821\,\dot\theta_{\text{br}}$ loses phase coherence $|\langle e^{i\theta}\rangle|$ within $0.13$--$0.37\,T_0$, identically to a classical Liouville ensemble with the same initial spread. Dephasing is thus classical in origin; the only quantum signature is periodic revival every $\simeq1.05\,T_0=2\pi\bar M/\hbar$.
+
+\subsection{Open-system model and jump decomposition}
+Following Sec.~V.C.1 of Part~I, the unconstrained engine (rotor $|\ell|\le8$ $\otimes$ oscillator $n\le6$) evolves under
+\begin{equation}
+\dot\rho=-i[H,\rho]+\sum_{j=c,p}\left(L_j\rho L_j^\dagger-\tfrac12\{L_j^\dagger L_j,\rho\}\right),
+\label{eq:lindblad}
+\end{equation}
+with $H$ from Eq.~(\ref{eq:L}) (coupling $-gx\sin\theta$), Davies cooling $L_c=\sqrt{0.5}\,\hat u_-$~\cite{Davies1974} of the relative velocity $\hat u=(\kappa/I)\frac12\{\cos\theta,p_\theta\}-p_x$, and saturating pump $L_p=\sqrt{0.2}\,e^{i\theta}f(\hat\ell)$, $f=\sqrt{\max(0,1-\ell^2/16)}$.
+
+We decompose 1582 cooling jumps from 16 quantum trajectories~\cite{Dalibard1992} of $1500$ time units. The mean released energy is $2.051\,\hbar\omega_0$, reproducing Part~I; $99.7\%$ comes from the rotor and $0.4\%$ from the oscillator. In the eigenbasis of $H$, $91.8\%$ of jumps (93.5\% of the energy) are $\ell\to\ell-1$ transitions with mean gap $2.84\,\hbar\omega_0$; oscillator transitions $n\to n-1$ (gap $0.998$) account for $4.1\%$; no jump has a gap below $0.5\,\hbar\omega_0$. A single quantum jump (20--35~MeV) already exceeds the neutron separation energy $S_n=8$~MeV, whereas the classical cascade of Part~I requires a median of three impacts. The Ericson partition of Part~I is therefore a classical-limit statement.
+
+%=====================================================================
+\section{Timeless formulation}
+\label{sec:wdw}
+%=====================================================================
+\subsection{History state and Wheeler--DeWitt constraint}
+The universe consists of a clock $C$, the engine $S$, and an environment $E$. Following Sec.~V.C.4 of Part~I, the clock is a pulse counter with tick $\tau=T_0/25$. At each tick the engine interacts with a fresh three-level record $\{\ket0,\ket{c},\ket{p}\}$ (no quantum, Carnot quantum, pump quantum) through the unitary collision~\cite{Ciccarello2022}
+\begin{equation}
+U=\exp\Big\{-i\Big[\tau H\otimes\mathbb{I}+\sqrt\tau\sum_{j}\big(L_j\otimes\ket{j}\bra0+\text{h.c.}\big)\Big]\Big\}.
+\label{eq:collision}
+\end{equation}
+The history state
+\begin{equation}
+\kket\Psi=\frac1{\sqrt N}\sum_{k=0}^{N-1}\ket k_C\otimes U_k\cdots U_1\ket{\psi_0}_S\ket{0\cdots0}_E
+\label{eq:history}
+\end{equation}
+obeys the discrete WdW constraint of Giovannetti, Lloyd and Maccone~\cite{GLM2015}, $\hat J\kket\Psi=\kket\Psi$ with $\hat J=\sum_k\ket{k+1}\bra k\otimes U_{k+1}$ (cyclically closed). We take $\ket{\psi_0}$ to be the constraint-satisfying packet ($\ell_0=3$, $\theta_0=0$, oscillator coherent state at $x=0$, $v=\kappa\ell_0$), which Sec.~\ref{sec:observer} identifies as a pointer state.
+
+For $N=8$ with $S$ restricted to $|\ell|\le4$, $n\le3$ (36 dimensions, $E$ of dimension $3^7$), we find $\|\hat J\Psi-\Psi\|=4.0\times10^{-15}$ and a uniform clock distribution $P(k)=1/8$. An external observer sees a static, pure universe.
+
+\subsection{Removing the $3^k$ barrier exactly}
+Any observable accessible to an internal observer is either a function of the conditional system state $\rho_S(k)=\Tr_E\langle k|\Psi\rangle\rangle$, or a statistic of the records. Writing $K_j=(\mathbb{I}\otimes\bra j)U(\mathbb{I}\otimes\ket0)$,
+\begin{equation}
+\rho_S(k)=\Lambda^k(\rho_0),\qquad \Lambda(\rho)=\sum_jK_j\rho K_j^\dagger ,
+\end{equation}
+and the branch $\ket{r_1\cdots r_k}_E$ of Eq.~(\ref{eq:history}) has Born weight $\|K_{r_k}\cdots K_{r_1}\psi_0\|^2$. Both are computable in the system dimension alone. This is a statement about the state of Eq.~(\ref{eq:history}), not an approximation.
+
+We verify it in the full model of Eq.~(\ref{eq:lindblad}) ($S$ of dimension 119): for $k\le7$ the full history state ($119\times3^7=260\,253$ dimensions) and $\Lambda^k(\rho_0)$ agree to $1.4\times10^{-15}$ in trace distance, with $\|\sum_jK_j^\dagger K_j-\mathbb{I}\|=3\times10^{-14}$.
+
+\begin{table}[t]
+\caption{Long-time conditional state $\rho_S(k)=\Lambda^k(\rho_0)$ of the history state ($\tau=T_0/25$, 1500 ticks). Since $SE$ is pure, $S(\rho_S)$ equals the entropy of the Carnot record register.}
+\label{tab:longtime}
+\begin{ruledtabular}
+\begin{tabular}{ccccc}
+$t/T_0$ & $\langle\ell\rangle$ & $\langle H\rangle$ & $\Tr\rho_S^2$ & $S(\rho_S)=S(E)$ \\
+\hline
+0 & 3.000 & 4.970 & 1.000 & 0.000 \\
+1 & 2.464 & 4.683 & 0.377 & 1.250 \\
+5 & 2.356 & 4.285 & 0.255 & 1.572 \\
+20 & 2.263 & 4.122 & 0.241 & 1.615 \\
+60 & 2.262 & 4.120 & 0.241 & 1.615 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Table~\ref{tab:longtime} extends the evolution to $60\,T_0$. The record entropy grows monotonically from zero and saturates once the engine reaches its stationary limit cycle, while the entropy of the universe remains zero.
+
+\subsection{Continuum limit}
+The collision model converges to Eq.~(\ref{eq:lindblad}) as $\tau\to0$: at $t=1,2,4\,T_0$ the trace distance is $(4.06,3.33,2.03)\times10^{-2}$ for $\tau=T_0/25$ and $(4.94,4.08,2.65)\times10^{-3}$ for $\tau=T_0/200$, halving with every halving of $\tau$ (ratio 1.95--2.04), i.e.\ exactly $O(\tau)$. In the continuum, an ideal clock with $\hat H_C=\hat p_c$ turns the constraint $(\hat p_c+\hat H_{SE})\Psi=0$ into $\Psi(c)=e^{-i\hat H_{SE}c}\Psi(0)$, whose reduced dynamics is Eq.~(\ref{eq:lindblad}) in the Born--Markov limit~\cite{Breuer2002}. The discrete history state is thus a controlled regularization of the continuous WdW equation.
+
+\subsection{Records, branches, and the three phases}
+Sampling 200 branches of Eq.~(\ref{eq:history}) by their Born weights over $60\,T_0$ reproduces $\Lambda^k$ ($\langle\ell\rangle=2.19\pm0.07$ against $2.262$). Every branch remains pure (deviation $<10^{-15}$). Each Carnot record lowers the conditional energy by $1.93\,\hbar\omega_0$ on average (median $2.17$). Records cluster in bursts of $1.51$ records (gap $<T_0$), separated by waits of mean $2.84\,T_0$. These numbers agree with the trajectory statistics of Part~I (1.57 and $2.05\,\hbar\omega_0$).
+
+This supplies an operational definition of the three phases inside a static universe: $\Epast$ is a stretch of the clock without new records, $\Epres$ a burst of Carnot records, and $\Efut$ the interval after a burst. Their order is fixed by the clock counter, and their direction by the monotonic growth of $S(E)$.
+
+\subsection{Why the clock must count}
+A rotor cannot serve as this clock. Its conditional states obey $|\langle\chi(\theta)|\chi(\theta+2\pi)\rangle|^2=1$. An orbital-angular-momentum photon clock with $\ell\in[-L,L]$ resolves $2L+1$ instants per turn, but is equally $2\pi$-periodic. We quantify the cost of periodicity with a rotor clock of action $J=I\dot\theta$ driving a particle ($g=1$, $\Omega=0.3$; Table~\ref{tab:clock}).
+
+\begin{table}[t]
+\caption{Infidelity of the Page--Wootters conditional state with the Schr\"odinger solution for a rotor clock of action $J$; minimum over $t\in[0.1,0.4]\,T_{\text{rot}}$. ``One turn'': Gaussian energy window of width $0.35\,T_{\text{rot}}$; ``WdW'': width $50\,T_{\text{rot}}$.}
+\label{tab:clock}
+\begin{ruledtabular}
+\begin{tabular}{ccc}
+$J$ ($\hbar$) & $1-F$ (one turn) & $1-F$ (WdW) \\
+\hline
+3 & 0.054 & 0.307 \\
+6 & 0.026 & 0.101 \\
+12 & 0.020 & 0.046 \\
+30 & 0.015 & 0.048 \\
+60 & 0.014 & 0.050 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Back-reaction dominates for $J\lesssim12\hbar$; the engine itself sits at $J\approx3\hbar$. Above that, $1-F$ saturates, and the floor does not depend on the clock resolution: at $J=30$, raising $\sigma_\ell$ from 3.2 to 10 increases $1-F$ from 0.015 to 0.026. The one-turn floor matches the weight of neighbouring windings in the window, $e^{-1/(2\cdot0.35^2)}=0.017$. In the WdW limit the floor ($\approx0.05$) reflects the coherent mixing of $t$ and $t+nT_{\text{rot}}$, since the particle frequency is incommensurate with $\Omega$.
+
+A periodic clock therefore never reproduces Schr\"odinger dynamics exactly; a counter does. In the classical engine at $k_BT=1$~MeV, a pulse train with $\tau\le0.1\,T_0$ orders all bursts correctly. However, $36\%$ of adjacent breakdown/re-lock pairs are separated by less than $0.01\,T_0$, so the ordering holds at the burst level.
+
+%=====================================================================
+\section{The Carnot bath as observer}
+\label{sec:observer}
+%=====================================================================
+\subsection{Pointer states}
+Each impact transfers momentum $\Lambda=m_{\text{eff}}u$ along $\nabla f$, so the bath records the relative velocity $\hat u$. We apply Zurek's predictability sieve~\cite{Zurek2003,PazZurek1999} with the actual channels of Eq.~(\ref{eq:lindblad}). Three families of initial pure states are compared: ten energy eigenstates (E), ten eigenstates of $\hat u$ (U), and eight constraint-satisfying packets (C), i.e.\ rotor localized at $\theta_0$ with $\ell_0=2,3$ and oscillator coherent at $x=\kappa\sin\theta_0$, $v=\kappa\ell_0\cos\theta_0$.
+
+\begin{table}[t]
+\caption{Predictability sieve: mean purity $\Tr\rho^2$ under the full channel of Eq.~(\ref{eq:lindblad}) ($\Gamma_c=0.5$, $\Gamma_p=0.2$). Families E and C agree between bases $|\ell|\le5,n\le4$ and $|\ell|\le7,n\le6$ to $\pm0.004$; family U is basis-sensitive.}
+\label{tab:sieve}
+\begin{ruledtabular}
+\begin{tabular}{cccc}
+$t/T_0$ & C (constraint) & E (eigen) & U ($\hat u$) \\
+\hline
+0.10 & \textbf{0.942} & 0.710 & 0.641 \\
+0.25 & \textbf{0.813} & 0.499 & 0.418 \\
+0.50 & \textbf{0.560} & 0.343 & 0.255 \\
+1.00 & \textbf{0.358} & 0.241 & 0.167 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The constraint-satisfying packets are selected at all times (Table~\ref{tab:sieve}), and with weak cooling ($\Gamma_c=0.05$) as well. The comparison is not biased by energy. Family C has the higher mean energy ($4.19$ vs.\ $1.72\,\hbar\omega_0$) but an eight-fold lower Carnot jump rate, $\langle L_c^\dagger L_c\rangle=0.023$ vs.\ $0.182$. On the constraint surface $u\approx0$, so the bath has nothing to record.
+
+The holonomic constraint of Part~I is thus the condition under which the observer does not disturb the engine. $\Epast$ is the pointer phase, breakdown into $\Epres$ ($u\neq0$) is the act of observation, and $\Efut$ is the selection of a new pointer state. Only for strong cooling ($\Gamma_c=5$) and $t\gtrsim0.5\,T_0$ do eigenstates regain purity faster, and this reflects relaxation to the pure ground state, not einselection.
+
+\subsection{Objectivity and Born statistics}
+We encode the three Past-phase rotations $|\ell|=1,2,3$ with weights $p=(0.2,0.3,0.5)$ unitarily into ten nucleon records, each rotated by $j\varphi_k$ with $\varphi_k\in[0.6,1.0]$. The off-diagonal elements of $\rho_S$ fall from $0.387$ to $0.006$. The mutual information $I(S{:}F)$ shows the quantum-Darwinist plateau~\cite{Zurek2009}, $I/H(S)=0.94$--$1.05$ for fragments of 3--7 records, i.e.\ redundancy $R_{0.1}=3.3$. An observer reading ten records infers the levels with frequencies $(0.200,0.294,0.506)$, computed directly from $\kket\Psi$. This encoding assumes ideal records. In the dynamical collision model of Eq.~(\ref{eq:collision}) (seven records, reference qubit entangled with two branches), the records learn more about two constraint packets $\theta_0=0,\pi$ (0.78~bit after $0.28\,T_0$) than about two energy eigenstates (0.44~bit), because the pump $e^{i\theta}$ imprints the rotor phase; but $I(R{:}F)$ grows record by record without a plateau, and $R_{0.1}\le1.75$ up to $1.4\,T_0$. Within the ideal-record model, decoherence, einselection and redundancy account for the absence of superpositions, the preferred basis, intersubjective agreement and Born frequencies. They do not select a single outcome; that remains interpretation-dependent.
+
+\subsection{Wave--particle complementarity of the vibrating mass}
+For the oscillator driven along the classical trajectory (a coherent state $\alpha=(x+iv)/\sqrt2$), the half-period overlap $V=e^{-2E_{\text{vib}}/\hbar\omega_0}$ and distinguishability $D=\sqrt{1-V^2}$ saturate the Englert relation~\cite{Englert1996}. Along the classical cycle at 1~MeV, the mass is intermediate ($V<0.9$, $D<0.9$) for 68--95\% of the time in every phase. The free Present phase is the most wave-like ($\langle V\rangle=0.83$), because the particle, released from the drive, is damped toward its zero-point state.
+
+%=====================================================================
+\section{Kinematic anti--de~Sitter embedding}
+\label{sec:ads}
+%=====================================================================
+In the non-relativistic limit, global AdS acts as an isotropic harmonic trap with $\omega_0=c/L$. Matching $\hbar\omega_0=10$~MeV fixes $L=\hbar c/\hbar\omega_0=19.733$~fm. This reproduces $T_0=2\pi L/c=4.1357\times10^{-22}$~s and $\ell_0=\sqrt{\bar\lambda_CL}=2.0364$~fm, and gives $E_{\text{vt}}=3\hbar c/L$. The identification $E_{\text{vt}}=\hbar c/L$ would instead give $L=6.58$~fm and fail to reproduce $T_0$.
+
+\begin{table*}[t]
+\caption{Numerical checks of the AdS embedding (RK4 geodesics; finite-difference Klein--Gordon with Richardson extrapolation; $m_NLc/\hbar=93.892$).}
+\label{tab:ads}
+\begin{ruledtabular}
+\begin{tabular}{lc}
+Quantity & Result \\
+\hline
+Geodesic period$/(2\pi L/c)$, $v_{\max}/c=0.034$--$0.995$ & $1.00000000$ \\
+AdS$_2$: $\omega_n$ vs.\ $\Delta+n$, $\Delta=94.393231$ & $|\delta|\le8\times10^{-9}$ \\
+AdS$_4$: $\omega$ vs.\ $\Delta+2n+l$, $\Delta=95.403881$ & $|\delta|\le4\times10^{-9}$ \\
+Shift of $E-m_Nc^2$ from oscillator & 13~keV (AdS$_2$), 120~keV (AdS$_4$) \\
+Shell degeneracies $N=0$--$4$ & 1, 3, 6, 10, 15 \\
+Breakdown radius $r_{\text{br}}=R/k$ & $3\ell_0=6.11$~fm $=0.31L$ \\
+$\dot\theta_{\text{br}}$: exact AdS potential & $3.2048\to3.2047$ \\
+$\dot\theta_{\text{br}}$: + relativistic kinematics ($\gamma^3m$) & $3.2021$ ($-0.08\%$) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+Table~\ref{tab:ads} shows the following. The isochrony of the nuclear oscillator is an exact geometric property of AdS. The global Klein--Gordon spectrum obeys the dictionary $\Delta(\Delta-d)=m^2L^2$ and reproduces the shell-model levels and degeneracies; closed shells at $A=2,8,20,40,70$ include the mass region of Part~I. The breakdown threshold $R=E_{\text{vt}}/\ell_0$ equals the AdS restoring force at $r_{\text{br}}=3\ell_0$, just outside the nuclear surface. Part~I's threshold is stable under the embedding to $0.1\%$, because the whole cycle takes place at $r\le0.25L$, in the deep infrared. Since $\Delta$ is not an integer, the field lives on the universal cover with time in $\mathbb R$~\cite{Avis1978}. Yet any particle state recurs after $2\pi L/c$ ($|\langle\psi(0)|\psi(2\pi)\rangle|^2=1$), so a particle in AdS is itself a periodic clock, consistent with Sec.~\ref{sec:wdw}.
+
+\paragraph*{Hawking--Page test.} With $L$ fixed, $T_{\text{HP}}=\hbar c/\pi L=3.18$~MeV and $T_{\min}=\sqrt3\hbar c/2\pi L=2.76$~MeV~\cite{HawkingPage1983,Witten1998}. In the classical engine, the clock ordering collapses between 2.5 and 3.0~MeV: wrong-order bursts rise from 16\% to 62\%, and the median time error from $1.1$ to $10.3\,T_0$. Halving $\gamma_x$ moves the collapse to 3--4~MeV, and with $\Delta E$ halved the ordering is already lost at 1~MeV (40\% wrong-order bursts), while $T_{\text{HP}}$ is unchanged. The proximity is therefore a coincidence of the parameters $(\Delta E,\gamma_x)$, not a consequence of the embedding.
+
+\paragraph*{Scope.} The rotor potential, the coupling $gx\sin\theta$, the constraint and the Carnot impacts break $SO(d,2)$ explicitly, and no large-$N$ boundary theory is present. The embedding is kinematic: it gives the oscillator sector a geometric meaning and fixes $L$. It is not a holographic duality of the engine, and we make no such claim. The Bekenstein bound for a Carnot burst is satisfied only when the rest energy is included (bound $\approx10^4$~nats vs.\ $\ln\rho_{\text{exc}}\approx22$~nats); the nucleus is far from holographic saturation.
+
+%=====================================================================
+\section{Limitations}
+%=====================================================================
+(i)~The collision model approximates Eq.~(\ref{eq:lindblad}) to $O(\tau)$, and Eq.~(\ref{eq:lindblad}) is itself Markovian; non-Markovian effects (HEOM) discussed in Part~I are not included. (ii)~Truncations ($|\ell|\le8$, $n\le6$) were checked against larger bases for the sieve and the constrained spectrum, but not for every quantity. (iii)~The record register stores which channel fired, not the full microscopic state of the nucleons; the exact equivalence of Sec.~\ref{sec:wdw} holds for this register. (iv)~The AdS section is kinematic, as stated above. (v)~Statistical errors of sampled branches are given where relevant.
+
+%=====================================================================
+\section{Conclusion}
+%=====================================================================
+Quantizing the engine of Part~I confirms the $\sim3\hbar$ scale: $|\ell|=3$ is the last locked level. It replaces sub-quantum Carnot losses by rotor-ladder quanta of $2.3$--$3.5\,\hbar\omega_0$. A complete timeless state of clock, engine and Carnot records satisfies the Wheeler--DeWitt constraint to machine precision. Its internal dynamics is accessible exactly at long times, despite the exponential record space, and converges to the Lindblad equation. The Carnot bath acts as observer. Its pointer states are the constraint-satisfying packets of the synchronized Past; with ideal records it reproduces redundancy and Born statistics, and their monotonic growth is the arrow of time inside a static universe. Global AdS provides an exact kinematic home for the oscillator sector, but no duality for the engine. These results turn the three temporal phases of Part~I into statements about records: $\Epast$ is what has been redundantly recorded, $\Epres$ is being recorded, and $\Efut$ is not yet recorded.
+
+\begin{acknowledgments}
+The author acknowledges independent analytical discussions and open numerical tools. All scripts reproducing the numbers in this work are available from the author.
+\end{acknowledgments}
+
+\begin{thebibliography}{99}
+\bibitem{PartI} H.~V.~A.~Khoa, Classical analytical mechanics formulation of a driven dual-engine coupling in nuclear vacuum: three-state temporal evolution, centrifugal breakdown, and semiclassical relaxation cascades (Part~I), manuscript (2026).
+\bibitem{DeWitt1967} B.~S.~DeWitt, Phys. Rev. \textbf{160}, 1113 (1967).
+\bibitem{PageWootters1983} D.~N.~Page and W.~K.~Wootters, Phys. Rev. D \textbf{27}, 2885 (1983).
+\bibitem{GLM2015} V.~Giovannetti, S.~Lloyd, and L.~Maccone, Phys. Rev. D \textbf{92}, 045033 (2015).
+\bibitem{Moreva2014} E.~Moreva, G.~Brida, M.~Gramegna, V.~Giovannetti, L.~Maccone, and M.~Genovese, Phys. Rev. A \textbf{89}, 052122 (2014).
+\bibitem{Maldacena1998} J.~M.~Maldacena, Adv. Theor. Math. Phys. \textbf{2}, 231 (1998).
+\bibitem{daCosta1981} R.~C.~T.~da~Costa, Phys. Rev. A \textbf{23}, 1982 (1981).
+\bibitem{Davies1974} E.~B.~Davies, Commun. Math. Phys. \textbf{39}, 91 (1974).
+\bibitem{Dalibard1992} J.~Dalibard, Y.~Castin, and K.~M{\o}lmer, Phys. Rev. Lett. \textbf{68}, 580 (1992).
+\bibitem{Ciccarello2022} F.~Ciccarello, S.~Lorenzo, V.~Giovannetti, and G.~M.~Palma, Phys. Rep. \textbf{954}, 1 (2022).
+\bibitem{Breuer2002} H.-P.~Breuer and F.~Petruccione, \emph{The Theory of Open Quantum Systems} (Oxford University Press, Oxford, 2002).
+\bibitem{Zurek2003} W.~H.~Zurek, Rev. Mod. Phys. \textbf{75}, 715 (2003).
+\bibitem{PazZurek1999} J.~P.~Paz and W.~H.~Zurek, Phys. Rev. Lett. \textbf{82}, 5181 (1999).
+\bibitem{Zurek2009} W.~H.~Zurek, Nat. Phys. \textbf{5}, 181 (2009).
+\bibitem{Englert1996} B.-G.~Englert, Phys. Rev. Lett. \textbf{77}, 2154 (1996).
+\bibitem{Avis1978} S.~J.~Avis, C.~J.~Isham, and D.~Storey, Phys. Rev. D \textbf{18}, 3565 (1978).
+\bibitem{HawkingPage1983} S.~W.~Hawking and D.~N.~Page, Commun. Math. Phys. \textbf{87}, 577 (1983).
+\bibitem{Witten1998} E.~Witten, Adv. Theor. Math. Phys. \textbf{2}, 505 (1998).
+\end{thebibliography}
+
+\end{document}

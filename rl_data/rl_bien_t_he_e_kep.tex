@@ -1,0 +1,266 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,amsthm,booktabs,bm}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{hyperref}
+
+\newcommand{\Edual}{\mathcal{E}_{\text{kép}}}
+\newcommand{\Epast}{\mathcal{E}_{\text{past}}}
+\newcommand{\Epres}{\mathcal{E}_{\text{present}}}
+\newcommand{\Efut}{\mathcal{E}_{\text{future}}}
+\newcommand{\E}{\mathbb{E}}
+\newtheorem{dinhly}{Định lý}
+\newtheorem{menhde}{Mệnh đề}
+\theoremstyle{remark}
+\newtheorem*{ghichu}{Ghi chú}
+
+\title{Phương trình Euler--Lagrange hệ $\Edual$ với biến thời gian $t$\\[2pt]
+\large Đưa $t$ của Học thuyết E vào phương trình học tăng cường và giải số}
+\author{Hua Van Anh Khoa}
+\date{1 tháng 10 năm 2026}
+
+\renewcommand{\abstractname}{Tóm tắt}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Tài liệu này lấy hệ $\Edual$ của \emph{HocThuyetE (8)} (rô-to pha $\theta$ ghép với hạt $x$ qua ràng buộc $x=\kappa\sin\theta$, gãy ly tâm $|\lambda|\ge R$, tái khóa Carnot) và đưa biến thời gian $t$ của học thuyết vào phương trình học tăng cường (RL) theo ba cách. (i)~\emph{Chiết khấu}: cực trị của $\int e^{-\rho t}L\,dt$ cho phương trình Euler--Lagrange có thêm $-\rho\,\partial L/\partial\dot q$, tức dạng Caldirola--Kanai với ma sát âm; chiết khấu RL tương đương bơm năng lượng $dE/dt=2\rho T$, và mô-men Van der Pol của bài báo là một chiết khấu phụ thuộc trạng thái $\rho_{\text{eff}}(\dot\theta)=\gamma_\theta(1-\dot\theta^2/\Omega_0^2)/I$. Thời gian lưu Poisson $\tau_{\text{dw}}$ cho hệ số chiết khấu $\gamma=e^{-\Delta t/\tau_{\text{dw}}}$. (ii)~\emph{Đồng hồ}: $t=k\tau$ với nhịp $\tau=T_0/25$ của đồng hồ xung Page--Wootters; phương trình Bellman horizon hữu hạn $V_k(s)$ trên đa tạp ràng buộc, có biên hấp thụ $|\lambda|\ge R$. (iii)~\emph{Bán-Markov}: mỗi chu trình $\Epast\to\Epres\to\Efut$ là một bước SMDP với thời gian lưu ngẫu nhiên $\tau_c$; hệ số chiết khấu là $\E[e^{-\rho\tau_c}]$, có dạng đóng từ luật $T_0+\mathrm{Exp}(\mu)$ và $\mathrm{Geom}(p)$ của học thuyết. Mọi số liệu dưới đây là kết quả chạy thật của \texttt{giai\_so\_rl\_bien\_t.py} và \texttt{giai\_so\_rl\_thu\_du\_lieu.py}.
+\end{abstract}
+
+%=====================================================================
+\section{Phương trình Euler--Lagrange hệ $\Edual$}
+%=====================================================================
+\subsection{Hàm Lagrange và ràng buộc}
+Không gian cấu hình $(\theta,x)\in S^1\times\mathbb R$, hàm Lagrange (phương trình (1) của bài báo):
+\begin{equation}
+L(\theta,x,\dot\theta,\dot x)=\tfrac12I\dot\theta^2+\tfrac12m\dot x^2+\Delta E\cos\theta-\tfrac12kx^2+gx\sin\theta .
+\label{eq:L}
+\end{equation}
+$L$ không chứa $t$ tường minh. Ràng buộc holonom của pha đồng bộ $\Epast$ là $f(\theta,x)=x-\kappa\sin\theta=0$, $\kappa=\ell_0\Delta E/E_{vt}=\ell_0/3$.
+
+\subsection{Phương trình Lagrange loại một có lực suy rộng}
+Thêm các lực không thế mà bài báo dùng: mô-men lái Rayleigh--Van der Pol $Q_\theta^{\text{VdP}}=\gamma_\theta(1-\dot\theta^2/\Omega_0^2)\dot\theta$, hàm tiêu tán Rayleigh $\mathcal F=\tfrac12\gamma_x\dot x^2$, lực Langevin $\xi_\theta,\xi_x$ với $\langle\xi_i(t)\xi_i(t')\rangle=2\gamma_ik_BT\,\delta(t-t')$. Ở đây ta thay phần lái bằng một \emph{mô-men điều khiển} $u(t)$ do tác tử RL chọn:
+\begin{align}
+\frac{d}{dt}\frac{\partial L}{\partial\dot\theta}-\frac{\partial L}{\partial\theta}&=u-\gamma_\theta\dot\theta+\xi_\theta-\lambda\kappa\cos\theta, \label{eq:ELth}\\
+\frac{d}{dt}\frac{\partial L}{\partial\dot x}-\frac{\partial L}{\partial x}&=-\gamma_x\dot x+\xi_x+\lambda. \label{eq:ELx}
+\end{align}
+Khử $\lambda$ bằng $\ddot x=\kappa\ddot\theta\cos\theta-\kappa\dot\theta^2\sin\theta$, được phương trình trên đa tạp một bậc tự do:
+\begin{equation}
+M(\theta)\ddot\theta=u-\gamma_\theta\dot\theta-\gamma_x\kappa^2\cos^2\theta\,\dot\theta+m\kappa^2\dot\theta^2\sin\theta\cos\theta-\Delta E\sin\theta-(k\kappa^2-2g\kappa)\sin\theta\cos\theta+\eta(t),
+\label{eq:reduced}
+\end{equation}
+với $M(\theta)=I+m\kappa^2\cos^2\theta$ và nhiễu hiệu dụng $\eta=\xi_\theta+\kappa\cos\theta\,\xi_x$. Khi $u=\gamma=\eta=0$ đây đúng là phương trình (6) của bài báo. Phản lực liên kết
+\begin{equation}
+\lambda=m\ddot x+kx-g\sin\theta+\gamma_x\dot x,\qquad x=\kappa\sin\theta,\ \dot x=\kappa\dot\theta\cos\theta,
+\label{eq:lambda}
+\end{equation}
+và pha $\Epast$ gãy sang $\Epres$ khi $|\lambda|\ge R=E_{vt}/\ell_0$.
+
+\subsection{Biến $t$ của Học thuyết E}
+Vì $L$ không phụ thuộc $t$, thời gian chỉ đi vào hệ qua năm cấu trúc mà học thuyết cung cấp:
+\begin{enumerate}
+\item chu kỳ $T_0=2\pi/\omega_0$ (thang đo);
+\item thời gian lưu pha đồng bộ $T_0+\mathrm{Exp}(\mu)$, $\mu=\tau_{\text{dw}}\approx4.5$--$6.0\,T_0$ (hazard Poisson $1/\tau_{\text{dw}}$);
+\item số cú va mỗi đợt $N\sim\mathrm{Geom}(p)$, $p\approx0.195$, khoảng cách cú va $\delta$;
+\item đồng hồ xung Page--Wootters nhịp $\tau=T_0/25$, số đọc $k$, $t=k\tau$;
+\item mũi tên thời gian: số bản ghi Carnot tăng đơn điệu theo $k$.
+\end{enumerate}
+Ba mục 2--4 lần lượt cho ba cách đưa $t$ vào RL ở các mục dưới.
+
+%=====================================================================
+\section{Từ Euler--Lagrange sang phương trình Bellman}
+%=====================================================================
+\subsection{Chiết khấu là ma sát âm}
+\begin{dinhly}[EL chiết khấu]\label{th:disc}
+Quỹ đạo làm dừng $S_\rho[q]=\int_0^Te^{-\rho t}L(q,\dot q)\,dt$ (đầu mút cố định) thỏa
+\begin{equation}
+\frac{d}{dt}\frac{\partial L}{\partial\dot q}-\frac{\partial L}{\partial q}=\rho\,\frac{\partial L}{\partial\dot q}.
+\label{eq:ELrho}
+\end{equation}
+Với \eqref{eq:L}: $I\ddot\theta=\rho I\dot\theta-\Delta E\sin\theta+gx\cos\theta$, $m\ddot x=\rho m\dot x-kx+g\sin\theta$, và năng lượng $E=T+\Pi$ thỏa $dE/dt=2\rho T$.
+\end{dinhly}
+\begin{proof}
+Biến phân: $\delta S_\rho=\int e^{-\rho t}\big[\partial_qL-\tfrac{d}{dt}\partial_{\dot q}L+\rho\,\partial_{\dot q}L\big]\delta q\,dt$. Nhân \eqref{eq:ELrho} với $\dot q$ và dùng $\partial_{\dot q}L\cdot\dot q=2T$ được $dE/dt=2\rho T$.
+\end{proof}
+Đổi dấu $\rho=-\gamma$ được hàm Lagrange Caldirola--Kanai $e^{\gamma t}L$ của dao động tắt dần. Như vậy \emph{hệ số chiết khấu RL đối ngẫu với ma sát}: chiết khấu $\rho>0$ là bơm năng lượng, ma sát là ``chiết khấu âm''. Mô-men Van der Pol của bài báo có đúng dạng $\rho_{\text{eff}}(\dot\theta)I\dot\theta$ với
+\begin{equation}
+\rho_{\text{eff}}(\dot\theta)=\frac{\gamma_\theta}{I}\Big(1-\frac{\dot\theta^2}{\Omega_0^2}\Big),
+\label{eq:rhoeff}
+\end{equation}
+tức một chiết khấu phụ thuộc trạng thái, bằng $0.1\,\omega_0$ khi $\dot\theta\to0$ và triệt tiêu trên chu trình giới hạn $\dot\theta=\Omega_0$. (Đối ngẫu này chính xác cho phương trình $\theta$; hai bậc tự do có tốc độ $\gamma_\theta/I\ne\gamma_x/m$ nên không gộp được thành một thừa số $e^{\gamma t}$ chung.)
+
+\subsection{Hamilton--Jacobi là Bellman với phần thưởng $L$}
+Đặt $S(q,t)=\operatorname{ext}\int_t^TL\,dt'$, điều khiển $v=\dot q$. Nguyên lý quy hoạch động cho
+\[
+-\partial_tS=\operatorname{ext}_v\big[L(q,v)+\partial_qS\cdot v\big]\ \Longrightarrow\ \partial_tS=H(q,-\partial_qS),
+\]
+đặc trưng của nó là phương trình EL. Phải dùng $\operatorname{ext}$ thay cho $\max$: $L$ lồi theo $\dot q$ nên tác dụng là điểm yên ngựa, ``tối đa hóa $\int L$'' không có nghiệm hữu hạn. Vì vậy trong RL thực, phần thưởng $r$ phải là một đại lượng khác $L$, còn \eqref{eq:reduced} đóng vai mô hình chuyển trạng thái.
+
+\subsection{Phương trình HJB có $t$ cho hệ $\Edual$}
+Trạng thái $s=(\theta,\dot\theta)$ trên đa tạp $\Epast$, hành động $u$, phần thưởng $r(s,u)$, biên gãy $\mathcal B=\{|\lambda(s,u)|\ge R\}$:
+\begin{equation}
+\rho V-\partial_tV=\max_u\Big\{r+\dot\theta\,\partial_\theta V+a(\theta,\dot\theta,u)\,\partial_{\dot\theta}V+\tfrac12\sigma^2(\theta)\,\partial^2_{\dot\theta}V\Big\},\quad V\big|_{\mathcal B}=-P,\ V(\cdot,T)=0,
+\label{eq:HJB}
+\end{equation}
+$a$ là vế phải của \eqref{eq:reduced} chia $M(\theta)$, $\sigma^2(\theta)=2k_BT(\gamma_\theta+\gamma_x\kappa^2\cos^2\theta)/M(\theta)^2$. Rời rạc theo đồng hồ $t=k\tau$:
+\begin{equation}
+V_k(s)=\max_u\sum_j w_j\Big[\mathbb 1_{\mathcal B_j}\,(-P)+\big(1-\mathbb 1_{\mathcal B_j}\big)\big(r_j+\gamma V_{k+1}(s'_j)\big)\Big],\qquad \gamma=e^{-\rho\tau},
+\label{eq:bellman_k}
+\end{equation}
+với $j$ chạy trên các nút Gauss--Hermite của cú hích nhiễu. Hai lựa chọn cho $t$: (a) horizon hữu hạn, $\rho=0$, $V_k$ phụ thuộc $k$ tường minh; (b) vô hạn, dừng, $\rho=1/\tau_{\text{dw}}$, nghĩa là tác tử coi pha $\Epast$ kết thúc ngẫu nhiên theo hazard Poisson của học thuyết:
+\begin{equation}
+\gamma=e^{-\tau/\tau_{\text{dw}}}=e^{-1/(25\times5.25)}=0.99241,\qquad \frac{1}{1-\gamma}=131.8\ \text{nhịp}=5.25\,T_0 .
+\label{eq:gamma}
+\end{equation}
+
+\subsection{Bellman bán-Markov trên chu trình ba pha}
+Ở thang chu trình, hành động là tỉ số lái $f$ ($\Omega_0=f\dot\theta_{\text{br}}$), chọn mỗi lần tái khóa $\Efut\to\Epast$. Chu trình $c$ có độ dài $\tau_c=$ (pha lưu) $+$ (đợt), giải phóng năng lượng Carnot $E_c$ cuối đợt và tốn công lái với công suất $P_W(f)$. Phần thưởng chiết khấu
+\begin{equation}
+R_c=-c_WP_W\,\frac{1-e^{-\rho\tau_c}}{\rho}+E_c\,e^{-\rho\tau_c},
+\qquad V=\max_f\Big\{\E[R_c\mid f]+\E[e^{-\rho\tau_c}\mid f]\,V\Big\}.
+\label{eq:smdp}
+\end{equation}
+Nếu $\tau_c=T_0+\mathrm{Exp}(\mu)+N\delta$, $N\sim\mathrm{Geom}(p)$ độc lập thì
+\begin{equation}
+\E[e^{-\rho\tau_c}]=\frac{e^{-\rho T_0}}{1+\rho\mu}\cdot\frac{p\,e^{-\rho\delta}}{1-(1-p)e^{-\rho\delta}} .
+\label{eq:closed}
+\end{equation}
+Q-learning bán-Markov không cần mô hình: $Q(a)\leftarrow Q(a)+\alpha\big[R_c+e^{-\rho\tau_c}\max_{a'}Q(a')-Q(a)\big]$; hệ số chiết khấu thay đổi theo từng mẫu vì $\tau_c$ ngẫu nhiên. Với $\rho\to0$ mục tiêu là tốc độ thưởng $\E[R_c]/\E[\tau_c]$ (định lý renewal--reward).
+
+%=====================================================================
+\section{Giải số}
+%=====================================================================
+Đơn vị: $\hbar\omega_0=1$ (10~MeV), $\omega_0=1$, $\ell_0=1$, $T_0=2\pi$; $I=m=k=\Delta E=1$, $\kappa=1/3$, $g=0.1$, $R=3$, $\gamma_\theta=0.1$, $\gamma_x=0.70$, $k_BT=0.1$ (Bảng~I của bài báo).
+
+\subsection{Kiểm Định lý~\ref{th:disc} (phần B)}
+Tích phân biến phân rời rạc của $S_\rho$ (trọng số $e^{-\rho t_k}$ tại điểm trái) cho cập nhật hiển
+$q_{k+1}=q_k+e^{\rho h}(q_k-q_{k-1})-h^2M^{-1}\nabla\Pi(q_k)$. So với RK4 của \eqref{eq:ELrho} tại $t=4T_0$, điều kiện đầu $\theta=0.3$, $\dot x=0.2$:
+
+\begin{center}
+\begin{tabular}{cccccc}
+\toprule
+$\rho$ & $h=T/1250$ & $h=T/2500$ & $h=T/5000$ & bậc đo \\
+\midrule
+0.00 & $1.47\times10^{-4}$ & $3.68\times10^{-5}$ & $9.21\times10^{-6}$ & 2.00 \\
+0.05 & $3.81\times10^{-3}$ & $1.98\times10^{-3}$ & $1.01\times10^{-3}$ & 0.97 \\
+0.10 & $1.48\times10^{-2}$ & $7.54\times10^{-3}$ & $3.81\times10^{-3}$ & 0.99 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Sai số hội tụ về 0, nên quỹ đạo dừng của tác dụng chiết khấu đúng là nghiệm của \eqref{eq:ELrho}. Với $\rho=0$ đây là Störmer--Verlet (bậc 2); với $\rho>0$ trọng số điểm trái cho bậc 1. Đẳng thức năng lượng: trên $[0,2T_0]$ với $\rho=0.1$, $\Delta E=0.161515$ và $\int2\rho T\,dt=0.161515$, lệch tương đối $6\times10^{-9}$.
+
+\subsection{Bellman có đồng hồ $t=k\tau$ trên đa tạp $\Epast$ (phần D)}
+\paragraph{Bài toán.} Tác tử chọn $u\in\{-0.2,0,0.1,0.2,0.3,0.4,0.6\}$ mỗi nhịp $\tau=T_0/25$. Phần thưởng mỗi nhịp là số vòng quay $\Delta\theta/2\pi$ (sản lượng của động cơ) trừ giá công $c\,\max(\int u\,d\theta,0)$, $c=0.15$. Gãy $|\lambda|\ge R$ kết thúc pha $\Epast$ với phạt $-P$. Horizon $20\,T_0=500$ nhịp, trạng thái đầu $(\theta,\dot\theta)=(0,2.15)$, đúng $\dot\theta_{\text{end}}$ sau tái khóa của bài báo.
+
+\paragraph{Lưới.} $72\times169$ điểm $(\theta,\dot\theta)\in S^1\times[-0.5,3.7]$, nội suy song tuyến, nhiễu Gauss--Hermite 5 nút. Trong mỗi nhịp, cú hích nhiễu được áp \emph{trước}, sau đó mới tích phân RK4 có kiểm $|\lambda|$. Thứ tự này quan trọng: bản đầu áp nhiễu \emph{sau} bước tất định, bỏ sót các lần vượt ngưỡng xảy ra giữa nhịp, nên lưới báo $P(\text{gãy})=0.9\%$ trong khi SDE thật cho $98\%$. Sau khi sửa, lưới và SDE khớp nhau (bảng dưới).
+
+\paragraph{Kiểm ngưỡng.} Tiệm cận $\sqrt{R/m\kappa}=3.000$. Ngưỡng theo quỹ đạo của Part~I là $3.2048$ (bài báo $3.205$). Ngưỡng tĩnh $\min\{\dot\theta:\max_\theta|\lambda|\ge R\}$ là $3.107$ khi không cản, $3.056$ khi có cản và $3.038$ khi $u=0.4$. Hai định nghĩa khác nhau vì $\dot\theta$ dao động theo $\theta$ trong một vòng.
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{$P=2$ vòng} & \multicolumn{2}{c}{$P=10$ vòng}\\
+ & $V$ & $P(\text{gãy})$ & $V$ & $P(\text{gãy})$\\
+\midrule
+Lưới, chính sách phụ thuộc $t$ & 33.574 & 0.013 & 33.492 & 0.008\\
+Lưới, chính sách dừng $\gamma=0.99241$ & 33.310 & 0.016 & 33.263 & 0.007\\
+SDE (4000 quỹ đạo), phụ thuộc $t$ & $33.892\pm0.019$ & 0.006 & $33.842\pm0.022$ & 0.003\\
+SDE (4000 quỹ đạo), dừng & $33.665\pm0.030$ & 0.007 & $33.616\pm0.025$ & 0.002\\
+\bottomrule
+\end{tabular}
+\end{center}
+Monte Carlo trên SDE gốc (bước $\tau/10$, kiểm $|\lambda|$ mọi bước) xác nhận mô hình lưới trong khoảng $1\%$. Chính sách phụ thuộc $t$ hơn chính sách dừng $+0.23$ vòng ($\approx0.7\%$, khoảng $6\sigma$). Lợi thế này nhỏ, và nó nằm ở cuối horizon:
+
+\begin{center}
+\begin{tabular}{lcccccc|c}
+\toprule
+thời gian còn lại & $20T_0$ & $10T_0$ & $5T_0$ & $2T_0$ & $1T_0$ & $0.4T_0$ & dừng\\
+\midrule
+$\dot\theta$ lớn nhất còn đẩy tại $\theta=0$ ($P=2$) & 2.90 & 2.90 & 2.93 & 2.98 & 2.95 & 2.95 & 2.95\\
+$\langle u\rangle$ trên $\dot\theta\in(1.5,3)$ ($P=2$) & 0.404 & -- & 0.424 & -- & 0.437 & 0.206 & --\\
+\bottomrule
+\end{tabular}
+\end{center}
+Khi gần hết giờ, tác tử chấp nhận chạy sát ngưỡng hơn (rủi ro gãy còn ít thời gian để xảy ra). Trong $0.4\,T_0$ cuối, nó giảm mô-men đi một nửa vì công bỏ ra không còn kịp biến thành vòng quay. Một chính sách dừng không có biến $t$ thì không làm được hai việc này.
+
+\subsection{Bellman bán-Markov trên chu trình $\Epast\to\Epres\to\Efut$ (phần S)}
+Dữ liệu: mô phỏng Langevin đầy đủ của Part~I (gãy, va Carnot dẻo $e=0$, tái khóa), $3$ giá trị $f\times4$ quỹ đạo $\times\,120\,T_0$. Máy đang chịu tải nặng nên tập dữ liệu nhỏ hơn dự kiến. Chu trình được tách bằng đúng quy tắc của \texttt{giai\_so\_burst\_g.analyse}.
+
+\begin{center}\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{cccccccccc}
+\toprule
+$f$ & số c.t. & $\langle\tau_c\rangle/T_0$ & $\mu/T_0$ & CV dư & $\langle N\rangle$ & $\langle E_c\rangle$ & $P(E_c\ge S_n)$ & $P_W$ & thưởng/$T_0$\\
+\midrule
+0.95 & 16 & 19.27 & 17.83 & 0.49 & 2.12 & 0.900 & 0.500 & 0.1748 & $-0.118$\\
+1.05 & 69 & 6.06 & 3.90 & 1.11 & 4.51 & 1.675 & 0.623 & 0.2303 & $+0.060$\\
+1.13 & 75 & 5.59 & 2.40 & 1.20 & 8.61 & 3.620 & 0.800 & 0.2661 & $+0.396$\\
+\bottomrule
+\end{tabular}
+\end{center}
+($c_W=0.15$; $E_c$ theo đơn vị $\hbar\omega_0$; $S_n=0.8$.) Tại $f=1.05$, $\mu=3.90\,T_0$ và $\langle N\rangle=4.51$, thấp hơn $4.5$--$6.0\,T_0$ và $5.12$ của bài báo. CV dư $1.11$ khớp với khoảng $1.0$--$1.1$ của bài báo. Với $69$ chu trình, sai số thống kê của $\mu$ cỡ $\pm12\%$.
+
+\paragraph{Dạng đóng \eqref{eq:closed} so với thực nghiệm} ($f=1.05$, $\mu=3.90\,T_0$, $p=0.222$, $\delta=0.257\,T_0$):
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$\rho$ & $\E[e^{-\rho\tau_c}]$ thực nghiệm & dạng đóng\\
+\midrule
+0.01 & 0.7089 & 0.7028\\
+0.03 & 0.4134 & 0.3901\\
+0.10 & 0.1148 & 0.0864\\
+\bottomrule
+\end{tabular}
+\end{center}
+Ở $\rho$ nhỏ, luật thời gian của học thuyết cho đúng hệ số chiết khấu (lệch $0.9\%$). Ở $\rho$ lớn, kết quả nhạy với các chu trình ngắn, và giả thiết pha lưu $T_0+\mathrm{Exp}$ thuần túy đánh giá thấp chúng (lệch $25\%$ tại $\rho=0.1$).
+
+\paragraph{Chính sách tối ưu theo sở thích thời gian $\rho$.}
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$\rho$ & $V(0.95)$ & $V(1.05)$ & $V(1.13)$ & $f^*$\\
+\midrule
+$0$ (tốc độ/$T_0$) & $-0.118$ & $+0.060$ & $+0.396$ & 1.13\\
+0.003 & $-6.523$ & $+2.408$ & $+18.133$ & 1.13\\
+0.01 & $-2.101$ & $+0.259$ & $+3.814$ & 1.13\\
+0.03 & $-0.771$ & $-0.243$ & $+0.366$ & 1.13\\
+0.1 & $-0.251$ & $-0.233$ & $-0.211$ & 1.13\\
+0.3 & $-0.087$ & $-0.109$ & $-0.125$ & \textbf{0.95}\\
+\bottomrule
+\end{tabular}
+\end{center}
+Công lái phải trả ngay, còn năng lượng Carnot chỉ đến ở cuối chu trình, nên khi $\rho$ đủ lớn ($\rho=0.3$, horizon $\approx0.5\,T_0$) lựa chọn tối ưu đảo sang lái yếu nhất.
+
+\paragraph{Horizon hữu hạn theo $t$.} Với $H=60\,T_0$, $\rho=0$, quy nạp lùi trên lưới $t$ bước $T_0/25$ cho $V(0)=20.72$. Chính sách là $f=1.13$ cho đến $t\approx57\,T_0$, dao động giữa $1.05$ và $1.13$ trong khoảng $57.1$--$57.4\,T_0$ (do nhiễu mẫu), rồi chuyển sang $f=0.95$ từ $t=58.1\,T_0$: chu trình không kịp khép trước hạn thì chỉ còn công lái.
+
+\paragraph{Q-learning bán-Markov không mô hình.} Môi trường lấy mẫu lại các chu trình thực nghiệm, $2\times10^5$ cập nhật, $\varepsilon=0.2$, $\alpha_n=n^{-0.6}$. Kết quả: $\rho=0.01$ học được $f^*=1.13$, $Q^*=3.814$ (chính xác $3.814$); $\rho=0.1$ học được $f^*=1.13$, $Q^*=-0.210$ (chính xác $-0.211$).
+
+%=====================================================================
+\section{Gắn biến $t$ vào RL của bạn}
+%=====================================================================
+\begin{enumerate}
+\item \textbf{Chiết khấu từ thời gian lưu.} Nếu bước RL dài $\Delta t$, đặt $\gamma=e^{-\Delta t/\tau_{\text{dw}}}$, $\tau_{\text{dw}}\approx5.25\,T_0$. Cách đặt này thay một siêu tham số tùy ý bằng thang thời gian vật lý của pha $\Epast$.
+\item \textbf{Đồng hồ trong trạng thái.} Khi có hạn chót hoặc chu kỳ, tăng trạng thái thành $(s,k)$ với $k$ là số đọc đồng hồ nhịp $T_0/25$, hoặc $(s,t\bmod T_0)$ cho bài toán tuần hoàn. Phần D cho thấy chính sách phụ thuộc $k$ chủ yếu ở cuối horizon.
+\item \textbf{Bước bán-Markov.} Khi hành động kéo dài một pha có độ dài ngẫu nhiên $\tau$, dùng
+\[
+Q(s,a)\leftarrow Q(s,a)+\alpha\Big[\textstyle\int_0^\tau e^{-\rho t}r\,dt+e^{-\rho\tau}\max_{a'}Q(s',a')-Q(s,a)\Big],
+\]
+thay cho $\gamma$ cố định. Nếu chỉ biết luật thời gian của học thuyết, dùng \eqref{eq:closed} để có kỳ vọng chiết khấu.
+\item \textbf{Biên gãy là trạng thái hấp thụ.} Kiểm $|\lambda(s,u)|\ge R$ \emph{trong suốt} nhịp, kể cả sau cú hích nhiễu, không chỉ tại cuối nhịp.
+\item \textbf{Mô hình chuyển.} Phương trình \eqref{eq:reduced} (pha khóa) và \eqref{eq:ELth}--\eqref{eq:ELx} (pha tự do) là mô phỏng môi trường. Cầu nối của Định lý~\ref{th:disc} chỉ là đẳng thức hình thức. Không đặt $r=L$, vì khi đó bài toán tối đa hóa không có nghiệm hữu hạn.
+\end{enumerate}
+
+%=====================================================================
+\section{Giới hạn}
+%=====================================================================
+\begin{itemize}
+\item Phần thưởng (vòng quay, công, năng lượng Carnot) và các giá $c$, $c_W$, $P$ là lựa chọn thiết kế của tài liệu này, không suy ra từ học thuyết. Kết luận định tính (chính sách đổi theo $t$ và $\rho$) có thể giữ khi đổi phần thưởng, nhưng các con số cụ thể thì không.
+\item Phần D là RL dựa trên mô hình (quy hoạch động chính xác trên lưới), không phải RL học sâu. Lợi thế của biến $t$ ở đây chỉ $0.7\%$.
+\item Phần S giả thiết trạng thái sau tái khóa là Markov ($\dot\theta$ sau đợt $\approx2.15$ gần như không phụ thuộc lịch sử). Dữ liệu chỉ có $16$--$75$ chu trình mỗi $f$; tại $f=1.05$, $\mu$ và $\langle N\rangle$ thấp hơn số của bài báo.
+\item Dạng đóng \eqref{eq:closed} chỉ chính xác khi $\rho\mu\ll1$.
+\item Tích phân biến phân với trọng số điểm trái chỉ có bậc 1 khi $\rho>0$; dùng trọng số điểm giữa sẽ được bậc 2.
+\end{itemize}
+
+\paragraph{Mã nguồn.} \texttt{giai\_so\_rl\_bien\_t.py} (phần B, D, S), \texttt{giai\_so\_rl\_thu\_du\_lieu.py} (dữ liệu Langevin), kết quả thô trong \texttt{rl\_data/}.
+
+
+\end{document}

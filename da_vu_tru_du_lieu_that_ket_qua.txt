@@ -1,0 +1,21 @@
+Đường cong động cơ (Part III): ΔE 0.20 → 8.53 ħω0 khi a = 10⁻³ → 10³; r 0.0007 → 1.079 /T0
+
+=== I. IAEA: 286 hạt nhân có độ phổ cập tự nhiên (bền/sống rất lâu), A = 2–238 ===
+  ħω0(A) = 6.6–32.5 MeV;  S_n = 1.66–20.58 MeV;  ε = S_n/ħω0 = 0.07–1.40 (dải mô hình ΔE 0.20–8.53; ngoài dải: 2)
+  mọi hạt nhân bền                           n = 286: σ_t = 0.703 (×2.02), r_max/r_min = 90.5  | chỉ thang T0(A): 0.258; chỉ trạng thái động cơ r(ε): 0.834
+  A = 40–100 (miền A ≈ 70 của học thuyết)    n =  85: σ_t = 0.540 (×1.72), r_max/r_min = 10.7  | chỉ thang T0(A): 0.091; chỉ trạng thái động cơ r(ε): 0.558
+  A ≥ 20                                     n = 271: σ_t = 0.511 (×1.67), r_max/r_min = 30.8  | chỉ thang T0(A): 0.189; chỉ trạng thái động cơ r(ε): 0.543
+  đồng hồ nhanh nhất: Si-28 (S_n = 17.18 MeV, ε = 1.27);  chậm nhất: Be-9 (S_n = 1.66 MeV, ε = 0.08)
+  tham chiếu A ≈ 70 (Zn-70): nhịp vật lý 9.482e+19 bản ghi/s
+
+=== II. EXFOR: 7 bộ đo phổ neutron thật (miền A ≈ 60–74) ===
+  bộ                                        A      E_tới   S_tách   E* (MeV)   ħω0(A)   ε = E*/ħω0   r(ε) /T0    nhịp vật lý (/s)
+  Cu(n,xn) 14.1 MeV — Baba 1988             64.5    14.1     7.6      21.7     10.22       2.12        0.204     5.035e+20
+  Cu(n,xn) 18.0 MeV — Baba 1988             64.5    18.0     7.6      25.6     10.22       2.50        0.256     6.316e+20
+  Cu(n,xn) 14.1 MeV — Takahashi 1988        64.5    14.1     7.6      21.7     10.22       2.12        0.204     5.035e+20
+  Ge(n,xn) 14.1 MeV — Gotoh 1992            73.6    14.1     7.4      21.5      9.78       2.20        0.214     5.060e+20
+  Ni(n,xn) 14.1 MeV — Yabuta 1986           59.7    14.1     9.0      23.1     10.49       2.20        0.214     5.441e+20
+  Ni(n,xn) 18.0 MeV — Yabuta 1986           59.7    18.0     9.0      27.0     10.49       2.57        0.265     6.721e+20
+  60Ni(p,xn) 22 MeV — Biryukov 1980         61.0    22.0     4.8      26.8     10.42       2.57        0.265     6.671e+20
+  σ_t (7 bộ EXFOR) = 0.125 (×1.13), r_max/r_min = 1.33
+

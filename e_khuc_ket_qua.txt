@@ -1,0 +1,50 @@
+=== A. Độ mở của tương lai khi đã biết toàn bộ bản ghi quá khứ (nhánh, Part III S 36 chiều) ===
+  300 nhánh × 1500 nhịp (60 T0), đo trên 20 T0 cuối
+  chế độ                                              h (nat/T0)   ± sai số   bề dày E khúc ε* = 1/h
+  PW đóng (chỉ H, không môi trường)                      0.0000   0.0000     ∞ (đóng băng)
+  chỉ Carnot (Quá khứ thắng)                             0.0294   0.0005     34.058 T0
+  chỉ bơm (Hiện tại thắng)                               0.0969   0.0000     10.317 T0
+  cân bằng nhiệt k_BT = 1 (có tích tắc, không chiều)     6.2020   0.0688     0.161 T0
+  E_dual: bơm + Carnot (ba pha xung đột)                 5.2202   0.0036     0.192 T0
+
+=== B. Cả ba pha xung đột: tách nhánh từ cùng một trạng thái 'bây giờ' (MCWF Part II) ===
+  48 điểm 'bây giờ' × 60 tương lai mỗi điểm; pha theo bản ghi Carnot (như ba-pha-xung-dot)
+
+  bây giờ ở Quá khứ (bản ghi gần nhất ≥ T0 trước) (34 điểm):
+    Δ/T0     P(QK)   P(HT)   P(TL)   entropy pha H(Δ) (nat)   tỉ lệ điểm có tương lai KHÔNG duy nhất
+     0.04    0.997   0.002   0.000   0.015                     0.18
+     0.10    0.982   0.013   0.005   0.083                     0.62
+     0.25    0.951   0.030   0.019   0.211                     0.94
+     0.50    0.893   0.053   0.054   0.393                     1.00
+     1.00    0.797   0.075   0.128   0.615                     1.00
+     2.00    0.744   0.088   0.169   0.714                     1.00
+     4.00    0.732   0.096   0.173   0.743                     1.00
+     8.00    0.752   0.078   0.169   0.696                     1.00
+
+  bây giờ ở vừa có bản ghi (< T0): Hiện tại hay Tương lai? (14 điểm):
+    Δ/T0     P(QK)   P(HT)   P(TL)   entropy pha H(Δ) (nat)   tỉ lệ điểm có tương lai KHÔNG duy nhất
+     0.04    0.000   0.325   0.675   0.537                     0.93
+     0.10    0.000   0.318   0.682   0.536                     0.93
+     0.25    0.068   0.288   0.644   0.534                     1.00
+     0.50    0.119   0.224   0.657   0.524                     1.00
+     1.00    0.601   0.155   0.244   0.879                     1.00
+     2.00    0.638   0.124   0.238   0.867                     1.00
+     4.00    0.755   0.094   0.151   0.702                     1.00
+     8.00    0.726   0.096   0.177   0.754                     1.00
+
+=== D. Tách độ mở tương lai h theo loại bản ghi (E_dual, Part III) ===
+  · (không có gì: 'chưa xảy ra' cũng là thông tin)    : 1.104 nat/T0 (21.2%), tần suất 23.870 /T0
+  C Carnot (Hiện tại ↔ Tương lai)                     : 1.814 nat/T0 (34.8%), tần suất 0.479 /T0
+  B bơm (Quá khứ ↔ Hiện tại)                          : 2.299 nat/T0 (44.1%), tần suất 0.651 /T0
+  tổng h = 5.217 nat/T0;  nat mỗi bản ghi Carnot ≈ 3.79, mỗi bản ghi bơm ≈ 3.53
+
+=== C. Người quan sát đọc một phần bản ghi (mỗi bản ghi đến tay với xác suất p) ===
+  p      h_quan_sát (nat/T0)   ε* = 1/h (T0)   nhầm: −ln q(kết quả thật) (nat/T0)   ⟨S(ρ_người quan sát)⟩ (nat)
+  1.0       5.219                0.192            5.246                          -0.000
+  0.9       4.869                0.205            5.038                          0.906
+  0.7       4.028                0.248            4.088                          1.341
+  0.5       3.077                0.325            3.246                          1.485
+  0.3       2.026                0.494            2.043                          1.598
+  0.1       0.800                1.250            0.817                          1.646
+  0.0       0.000              28952965460216705452061249144902067573415173062011709305754317627228204841100624899117207053602848895022175861319592996150254760316673651678219566766511552035401169281097137926971209555688730845877322826445870389552997296715286086616972032595702837439633427008078069160224093386448298441166553088.000            0.000                          1.667
+

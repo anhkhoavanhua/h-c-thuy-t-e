@@ -1,0 +1,34 @@
+S 36 chiều, Liouvillian 1296×1296; khe phổ (tốc độ hồi phục chậm nhất) = 0.0503 ω0 ⟹ thời gian hồi phục 3.17 T0
+
+=== A. Yêu cầu của K̂ theo đơn vị vật lý ===
+  T0                                         = 4.136e-22 s = 413.6 ys (yoctogiây)
+  σ_t cho 99% xếp đúng ba pha = 0.071 T0     = 2.937e-23 s = 29.4 ys (yoctogiây)
+  nhịp τ = T0/25                             = 1.654e-23 s = 16.5 ys (yoctogiây)
+  băng thông tối thiểu của xung dài σ_t:  ħ/(2σ_t) = 11.2 MeV
+  photon có ≥ 1 chu kỳ trong nhịp τ:      h/τ = 250 MeV  (ngưỡng sinh pion ≈ 140 MeV; ngân sách kích thích 20–30 MeV)
+  xung attosecond cô lập ngắn nhất đã đo (43 as)                : 4.30e-17 s =  103965 T0 = 1464298 × σ_t yêu cầu
+  chu kỳ chuỗi xung attosecond (nửa chu kỳ laser 800 nm ≈ 1.33 fs): 1.33e-15 s = 3215667 T0 = 45291089 × σ_t yêu cầu
+  photon XUV 100 eV — năng lượng                                : 1e−4 MeV = 8.9e-06 lần băng thông cần
+
+=== B. Rung không tích lũy σ_K (mỗi lần đọc kim lệch ε ~ N(0, σ_K²)) ===
+  σ_K/T0    σ_K (s)    max‖ρ̃−ρ‖   biên độ động lực max‖ρ̃(t̂₁)−ρ̃(t̂₂)‖   nửa nhóm ‖ρ̃(t̂+1T0) − e^{T0ℒ}ρ̃(t̂)‖, t̂ = 3σ+0.5T0
+     0.000  0.00e+00     0.0000   0.981 → 0.981                          8.1e-16
+     0.001  4.14e-25     0.0055   0.981 → 0.981                          7.7e-16
+     0.002  8.27e-25     0.0109   0.981 → 0.981                          7.0e-16
+     0.003  1.24e-24     0.0164   0.981 → 0.980                          6.4e-16
+     0.005  2.07e-24     0.0272   0.981 → 0.980                          7.0e-16
+     0.010  4.14e-24     0.0537   0.981 → 0.978                          8.1e-16
+     0.071  2.94e-23     0.4176   0.981 → 0.890                          5.7e-16
+     0.270  1.12e-22     0.7450   0.981 → 0.618                          1.2e-07
+     1.000  4.14e-22     0.8953   0.981 → 0.507                          1.1e-04
+     5.000  2.07e-21     0.8754   0.981 → 0.288                          6.4e-04
+   104.000  4.30e-20     0.8749   0.981 → 0.000                          1.7e-03
+
+=== C. Rung tích lũy (đồng hồ tự chạy, Var[t̂ − t] = D t): ℒ_eff = ℒ + (D/2)ℒ² ===
+  D/T0      σ_t tại 5 T0   ‖quadrature − e^{t(ℒ+Dℒ²/2)}‖   max‖ρ̃ − ρ‖ (sai số do đồng hồ)
+    1e-04      0.022 T0      1.05e-15                    0.0074
+    1e-03      0.071 T0      1.00e-15                    0.0622
+    3e-03      0.122 T0      1.80e-10                    0.1409
+    1e-02      0.224 T0      9.48e-05                    0.2757
+    3e-02      0.387 T0      9.01e-03                    0.4281
+    1e-01      0.707 T0      7.81e-02                    0.5939
